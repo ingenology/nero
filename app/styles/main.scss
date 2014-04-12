@@ -58,7 +58,7 @@ $icon-font-path: "../../bower_components/sass-bootstrap/fonts/";
 /* --------------------------------------------------------------------------
  Colors
  -------------------------------------------------------------------------- */
-$color-navbg: #eee;
+$color-navbg: #fafafa;
 
 
 /* --------------------------------------------------------------------------
@@ -150,8 +150,36 @@ body { font-size: 16px; }
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   h1 { margin: 0; }
+  .nav-pills {
+	float: right;
+	a {
+	  color: darken($color-navbg, 90%);
+	  &:hover {
+		background: darken($color-navbg, 80%);
+		color: darken($color-navbg, 25%);
+	  }
+	}
+	.active a { background: darken($color-navbg, 90%); }
+	border-radius: 0;
+  }
 }
-#logo img { height: 40px; }
+#logo {
+  float: left;
+  img {height: 40px;}
+}
+
+@media (max-width: em(768)) {
+	.wrapper-appNav {
+	  #logo, .nav { float: none; text-align: center; }
+	  #logo {
+		display: block;;
+	  }
+	  .nav {
+		margin-top: 1em;
+		li { display: block; width: 100%; }
+	  }
+	}
+}
 
 
 

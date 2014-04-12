@@ -5086,15 +5086,38 @@ body {
  General Styles
  -------------------------------------------------------------------------- */
 .wrapper-appNav {
-  background: #eeeeee;
+  background: #fafafa;
   padding-top: 0.5em;
   padding-bottom: 0.5em; }
   .wrapper-appNav h1 {
     margin: 0; }
+  .wrapper-appNav .nav-pills {
+    float: right;
+    border-radius: 0; }
+    .wrapper-appNav .nav-pills a {
+      color: #141414; }
+      .wrapper-appNav .nav-pills a:hover {
+        background: #2e2e2e;
+        color: #bababa; }
+    .wrapper-appNav .nav-pills .active a {
+      background: #141414; }
 
-#logo img {
-  height: 40px; }
+#logo {
+  float: left; }
+  #logo img {
+    height: 40px; }
 
+@media (max-width: 48em) {
+  .wrapper-appNav #logo, .wrapper-appNav .nav {
+    float: none;
+    text-align: center; }
+  .wrapper-appNav #logo {
+    display: block; }
+  .wrapper-appNav .nav {
+    margin-top: 1em; }
+    .wrapper-appNav .nav li {
+      display: block;
+      width: 100%; } }
 /* - - - - - - - - - - - - - - - - * // * - - - - - - - - - - - - - - - - -  */
 /* ==========================================================================
  $_USER PROFILE

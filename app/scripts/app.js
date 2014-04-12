@@ -12,10 +12,6 @@ angular.module('neroApp', [
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
             })
-            .when('/test', {
-                templateUrl: 'views/test.html',
-                controller: 'MainCtrl'
-            })
             .when('/dashboard', {
                 templateUrl: 'views/dashboard.html',
                 controller: 'MainCtrl'
