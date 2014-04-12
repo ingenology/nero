@@ -5160,24 +5160,54 @@ footer {
       border-radius: 100px; }
 
 .user-journals {
-  padding-top: 4em; }
+  padding-top: 5em; }
+  .user-journals .addEntry {
+    width: 100%;
+    background: orange;
+    padding: 0.25em;
+    text-align: center;
+    margin-bottom: 2em;
+    font-size: 2em;
+    color: #fff; }
+  .user-journals .title-entries {
+    text-align: center;
+    margin-bottom: 1em;
+    color: #ccc; }
   .user-journals .entry {
-    background: #eee;
-    padding-top: 1em;
-    margin-bottom: 2em; }
+    background: #222222;
+    color: #a2a2a2;
+    margin-bottom: 2em;
+    -webkit-box-shadow: inset 0 1px 20px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 20px rgba(0, 0, 0, 0.075); }
     .user-journals .entry:hover {
-      background: #ccc;
+      background: black;
+      color: #eeeeee;
       cursor: pointer; }
-    .user-journals .entry h1, .user-journals .entry time {
-      font-size: 1em;
+    .user-journals .entry .status {
+      text-align: center;
+      margin-bottom: 1em;
+      font-size: 0.75em;
+      color: #fff; }
+      .user-journals .entry .status.submitted {
+        background: #0367a6;
+        color: #abddfd; }
+      .user-journals .entry .status.needsImgs {
+        background: #654673;
+        color: #dfd3e5; }
+      .user-journals .entry .status.error {
+        background: #f21d2f;
+        color: white; }
+    .user-journals .entry .wrapper-title {
       padding: 0 1em; }
     .user-journals .entry h1 {
+      font-size: 1em;
       margin: 0; }
     .user-journals .entry time span:before {
       content: 'at '; }
     .user-journals .entry img {
       margin-top: 0.5em;
-      max-width: 100%; }
+      max-width: 100%;
+      border-top: 1px solid #484848; }
 
 @media (max-width: 48em) {
   .user-journals time span {
