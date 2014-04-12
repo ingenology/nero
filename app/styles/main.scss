@@ -1,6 +1,6 @@
-$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
+$icon-font-path: "../../bower_components/sass-bootstrap/fonts/";
 
-@import 'sass-bootstrap/lib/bootstrap';
+@import '../bower_components/sass-bootstrap/lib/bootstrap';
 
 .browsehappy {
     margin: 0.2em 0;
@@ -11,8 +11,8 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 /* Space out content a bit */
 body {
-    padding-top: 2em;
-    padding-bottom: 2em;
+    padding-top: 4em;
+    padding-bottom: 4em;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
