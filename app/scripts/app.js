@@ -6,17 +6,25 @@ angular.module('neroAppApp', [
   'ngSanitize',
   'ngRoute'
 ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/test', {
-        templateUrl: 'views/test.html',
-        controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+    .config(function ($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'views/main.html',
+                controller: 'MainCtrl'
+            })
+            .when('/test', {
+                templateUrl: 'views/test.html',
+                controller: 'MainCtrl'
+            })
+            .when('/dashboard', {
+                templateUrl: 'views/dashboard.html',
+                controller: 'MainCtrl'
+            })
+            .when('/userJournal', {
+                templateUrl: 'views/userJournal.html',
+                controller: 'MainCtrl'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
+    });
