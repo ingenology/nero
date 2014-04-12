@@ -5161,3 +5161,13 @@ footer {
 
 .user-journals {
   padding-top: 4em; }
+  .user-journals .col {
+    text-align: center; }
+  .user-journals .entry {
+    background: #eee;
+    padding: 1em;
+    font-size: 16px;
+    margin-bottom: 2em; }
+    .user-journals .entry h1 {
+      margin: 0;
+      font-size: 1em; }
