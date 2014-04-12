@@ -6,3 +6,4 @@ dist
 app/bower_components
 pkg
 .DS_Store
+src/github.com

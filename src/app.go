@@ -1,7 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"models"
+)
 
 func main() {
-	fmt.Println("Init check in")
+	models.Init()
+
+	fmt.Println("Init server")
 }
