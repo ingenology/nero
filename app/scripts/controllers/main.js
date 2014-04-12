@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('neroAppApp')
+angular.module('neroApp')
   .controller('MainCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',

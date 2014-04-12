@@ -17,6 +17,7 @@
  * ===========================================
  *
  *  $_VARIABLES
+ *    - Build
  *    - Colors
  *    - Fonts
  *    - Math
@@ -28,6 +29,9 @@
  *    - Body
  *
  *  $_NAVIGATION
+ *    - General
+ *
+ *  $_USER PROFILE
  *    - General
  *
  */
@@ -51,6 +55,11 @@
 $icon-font-path: "../../bower_components/sass-bootstrap/fonts/";
 @import '../bower_components/sass-bootstrap/lib/bootstrap';
 
+/* --------------------------------------------------------------------------
+ Colors
+ -------------------------------------------------------------------------- */
+$color-navbg: #eee;
+
 
 /* --------------------------------------------------------------------------
  Browsehappy
@@ -63,10 +72,64 @@ $icon-font-path: "../../bower_components/sass-bootstrap/fonts/";
     padding: 0.2em 0;
 }
 
-/* --------------------------------------------------------------------------
- Color Variables
- -------------------------------------------------------------------------- */
 
+/* --------------------------------------------------------------------------
+ Font Variables
+ -------------------------------------------------------------------------- */
+$font_stack: Arial, Helvetica, sans-serif;
+$font_size_base: 16px;
+
+
+/* --------------------------------------------------------------------------
+ Math Variables
+ -------------------------------------------------------------------------- */
+$browser_context: 16;
+
+
+
+
+
+/* - - - - - - - - - - - - - - - - * // * - - - - - - - - - - - - - - - - -  */
+
+
+
+
+
+/* ==========================================================================
+ $_MIXINS
+
+ These are SASS functions.
+ ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+ Px -> EM Conversion
+ -------------------------------------------------------------------------- */
+@function em($pixels, $context: $browser_context) {
+  @return #{$pixels/$context}em
+}
+
+
+
+
+
+/* - - - - - - - - - - - - - - - - * // * - - - - - - - - - - - - - - - - -  */
+
+
+
+
+
+/* ==========================================================================
+ $_GLOBAL
+ ========================================================================== */
+
+body { font-size: 16px; }
+
+
+
+
+
+/* - - - - - - - - - - - - - - - - * // * - - - - - - - - - - - - - - - - -  */
 
 
 
@@ -82,4 +145,55 @@ $icon-font-path: "../../bower_components/sass-bootstrap/fonts/";
  General Styles
  -------------------------------------------------------------------------- */
 
+.wrapper-appNav {
+  background: $color-navbg;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  h1 { margin: 0; }
+}
 #logo img { height: 40px; }
+
+
+
+
+
+/* - - - - - - - - - - - - - - - - * // * - - - - - - - - - - - - - - - - -  */
+
+
+
+
+
+/* ==========================================================================
+ $_USER PROFILE
+ ========================================================================== */
+
+/* --------------------------------------------------------------------------
+ General Styles
+ -------------------------------------------------------------------------- */
+
+.banner-userProfile {
+  $base-color_userProfile: black;
+  position: relative;
+  background: url("../images/userProfile/profile_banner.jpg") $base-color_userProfile;
+  min-height: 12em;
+  border-bottom: 2px solid lighten($base-color_userProfile, 90%);
+  .wrapper-userProfile {
+	position: absolute;
+	top: 2.25em;
+	width: 100%;
+	text-align: center;
+	.userProfile {
+	  margin: 0 auto;
+	  max-width: 200px;
+	  border: 4px solid lighten($base-color_userProfile, 85%);
+
+	  // Rounded Corners
+	  $userProfile-corner: 100px;
+	  -moz-border-radius: $userProfile-corner;
+	  -webkit-border-radius: $userProfile-corner;
+	  -khtml-border-radius: $userProfile-corner;
+	  border-radius: $userProfile-corner;
+	}
+  }
+}
+.user-journals { padding-top: 2em; }

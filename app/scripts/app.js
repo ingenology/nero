@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('neroAppApp', [
+angular.module('neroApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
