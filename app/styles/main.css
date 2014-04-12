@@ -5164,11 +5164,16 @@ footer {
   .user-journals .addEntry {
     width: 100%;
     background: orange;
-    padding: 0.25em;
+    padding: 0.25em 0.25em 0.1em;
     text-align: center;
     margin-bottom: 2em;
     font-size: 2em;
-    color: #fff; }
+    color: #fff;
+    border-bottom: 0.15em solid orange; }
+    .user-journals .addEntry:hover {
+      cursor: pointer;
+      background: #e69500;
+      border-bottom: 0.15em solid black; }
   .user-journals .title-entries {
     text-align: center;
     margin-bottom: 1em;
@@ -5211,7 +5216,6 @@ footer {
 
 @media (max-width: 48em) {
   .user-journals time span {
-    padding: 0 1em;
     display: block; }
   .user-journals time span:before {
     content: '' !important; } }
