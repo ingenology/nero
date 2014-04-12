@@ -251,15 +251,31 @@ footer { color: #ccc; text-align: center; margin-top: 2em; }
 }
 .user-journals {
   padding-top: 4em;
-  .col { text-align: center; }
   .entry {
 	background: #eee;
-	padding: 1em;
-	font-size: 16px;
+	padding-top: 1em;
 	margin-bottom: 2em;
+	&:hover {
+	  background: #ccc;
+	  cursor: pointer;
+	}
+	h1, time, {
+	  font-size: 1em; padding: 0 1em; }
 	h1 {
 	  margin: 0;
-	  font-size: 1em;
 	}
+	time {
+	  span:before { content: 'at '; }
+	}
+	img { margin-top: 0.5em; max-width: 100%; }
+  }
+}
+
+@media (max-width: em(768)) {
+  .user-journals {
+	  time {
+		span { padding: 0 1em; display: block; }
+		span:before { content: '' !important; }
+	  }
   }
 }

@@ -5161,13 +5161,27 @@ footer {
 
 .user-journals {
   padding-top: 4em; }
-  .user-journals .col {
-    text-align: center; }
   .user-journals .entry {
     background: #eee;
-    padding: 1em;
-    font-size: 16px;
+    padding-top: 1em;
     margin-bottom: 2em; }
+    .user-journals .entry:hover {
+      background: #ccc;
+      cursor: pointer; }
+    .user-journals .entry h1, .user-journals .entry time {
+      font-size: 1em;
+      padding: 0 1em; }
     .user-journals .entry h1 {
-      margin: 0;
-      font-size: 1em; }
+      margin: 0; }
+    .user-journals .entry time span:before {
+      content: 'at '; }
+    .user-journals .entry img {
+      margin-top: 0.5em;
+      max-width: 100%; }
+
+@media (max-width: 48em) {
+  .user-journals time span {
+    padding: 0 1em;
+    display: block; }
+  .user-journals time span:before {
+    content: '' !important; } }
