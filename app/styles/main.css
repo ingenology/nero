@@ -5137,6 +5137,7 @@ h1 {
   padding-bottom: 3em;
   text-align: center; }
   .banner h1 {
+    font-size: 2em;
     color: #fff; }
 
 /* - - - - - - - - - - - - - - - - * // * - - - - - - - - - - - - - - - - -  */
@@ -5271,3 +5272,31 @@ footer {
  -------------------------------------------------------------------------- */
 .wrapper-addEntry .banner {
   margin-bottom: 2em; }
+.wrapper-addEntry .capturePosData {
+  color: white;
+  background: orange;
+  width: 100%;
+  font-size: 1.25em;
+  padding: 1.5em 1em; }
+.wrapper-addEntry .posDataReadout {
+  font-weight: bold;
+  display: none;
+  margin: 1em 0;
+  background: #eee;
+  padding: 1em;
+  color: #999; }
+  .wrapper-addEntry .posDataReadout .readoutWait img {
+    width: 3em;
+    margin-right: 1em; }
+  .wrapper-addEntry .posDataReadout span {
+    font-weight: 300; }
+  .wrapper-addEntry .posDataReadout .data {
+    display: none; }
+
+@media (max-width: 48em) {
+  .wrapper-addEntry .readoutWait {
+    text-align: center; }
+    .wrapper-addEntry .readoutWait span {
+      display: block; }
+    .wrapper-addEntry .readoutWait img {
+      margin: 0 0 1em 0; } }

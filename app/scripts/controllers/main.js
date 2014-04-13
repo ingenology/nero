@@ -1,5 +1,9 @@
 'use strict';
 
+/* --------------------------------------------------------------------------
+ Angular Stuff
+ -------------------------------------------------------------------------- */
+
 angular.module('neroApp')
   .controller('MainCtrl', function ($scope) {
     $scope.awesomeThings = [
@@ -9,5 +13,29 @@ angular.module('neroApp')
     ];
   });
 
-// Fade Page In
-$('.fade-in').hide().fadeIn(2000);
+/* --------------------------------------------------------------------------
+ Phone Capture Data
+ -------------------------------------------------------------------------- */
+
+function getLocation() {
+    $('.posDataReadout .data').hide();
+    $('.posDataReadout .data *').html();
+    $('.readoutWait').show();
+    $('.posDataReadout').show();
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        readout.html("Geolocation is not supported by this browser.");
+    }
+}
+
+function showPosition(position) {
+    $('.data-lat').html('<div>Latitude: <span>' + position.coords.latitude + ' deg</span></div>');
+    $('.data-long').html('<div>Longitude: <span>' + position.coords.longitude + ' deg</span></div>');
+    $('.data-azi').html('<div>Azimuth: <span>' + 89 + ' deg</span></div>');
+    $('.data-alt').html('<div>Altitude: <span>' + 65 + ' deg</span></div>');
+    $('.readoutWait').hide();
+    $('.posDataReadout .data').fadeIn();
+    $('.capturePosData').html('Recapture Data');
+
+}

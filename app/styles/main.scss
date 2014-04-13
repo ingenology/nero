@@ -62,6 +62,7 @@ $icon-font-path: "../../bower_components/sass-bootstrap/fonts/";
 /* --------------------------------------------------------------------------
  Colors
  -------------------------------------------------------------------------- */
+// TODO Go through the styles and shore up colors into variables properly.
 $color-navbg: #fafafa;
 
 
@@ -196,7 +197,7 @@ h1 { margin-top: 0; }
   padding-top: 3em;
   padding-bottom: 3em;
   text-align: center;
-  h1 { color: #fff; }
+  h1 { font-size: 2em; color: #fff; }
 }
 
 
@@ -395,4 +396,27 @@ footer { color: #ccc; text-align: center; margin-top: 2em; }
 
 .wrapper-addEntry {
   .banner { margin-bottom: 2em; }
+  .btn .inactive { }
+  .capturePosData { color: lighten(orange, 55%); background: orange; width: 100%; font-size: 1.25em; padding: 1.5em 1em; }
+  .posDataReadout {
+	.readoutWait img { width: 3em; margin-right: 1em; }
+	font-weight: bold;
+	span { font-weight: 300; }
+	display: none;
+	margin: 1em 0;
+	background: #eee;
+	padding: 1em;
+	color: #999;
+	.data { display: none; }
+  }
+}
+
+@media (max-width: em(768)) {
+  .wrapper-addEntry {
+	.readoutWait {
+	text-align: center;
+	  span { display: block; }
+	  img { margin: 0 0 1em 0; }
+	}
+  }
 }

@@ -17,28 +17,20 @@
 			<label for="newEntry-Notes">Associated Notes</label>
 			<textarea id="newEntry-Notes" class="form-control" rows="3" placeholder="Enter any field notes."></textarea>
 		</div>
-		<button class="btn">Capture Position Data</button>
 		<div class="posDataReadout">
-			<span>Latitude: 39.091315</span>
-			<span>Longitude: -94.577012</span>
-			<span>Azimuth: 90 deg</span>
-			<span>Altitude: 65 deg</span>
+			<div class="readoutWait">
+				<img src="images/progress/getPosition.gif">
+				<span>Gathering Position Data From Your Device...</span>
+			</div><!-- /.status -->
+			<div class="data">
+				<div class="data-lat"></div>
+				<div class="data-long"></div>
+				<div class="data-azi"></div>
+				<div class="data-alt"></div>
+			</div><!-- /.data -->
 		</div><!-- /.posDataReadout -->
-		<button type="submit" class="btn">Submit</button>
+		<button onclick="getLocation()" class="btn capturePosData">Capture Position, Direction, Altitude</button>
 	</form>
 </div><!-- /.container -->
 
 </div><!-- /.wrapper-addEntry -->
-
-<ul>
-	<li>Title</li>
-	<li>Tags</li>
-	<li>Notes</li>
-	<li>Capture</li>
-	<ul>
-		<li>GPS</li>
-		<li>Angle</li>
-		<li>Azimuth</li>
-		<li>??</li>
-	</ul>
-</ul>
