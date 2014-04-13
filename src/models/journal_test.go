@@ -1,21 +1,21 @@
 package models
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
 func TestJournalModel(t *testing.T) {
-	Init()
+	Init(100)
 
 	journal := &Journal{
-		UserId: 1,
-		Title: "Test Journal",
-		Latitude: float64(1.2),
-		Longitude: float64(3.4),
+		UserId:     1,
+		Title:      "Test Journal",
+		Latitude:   float64(1.2),
+		Longitude:  float64(3.4),
 		CreateDate: int64(12345),
-		Azimuth: float64(4.5),
-		Altitude: float64(6.7),
+		Azimuth:    float64(4.5),
+		Altitude:   float64(6.7),
 	}
 
 	err := InsertJournal(journal)
@@ -29,7 +29,7 @@ func TestJournalModel(t *testing.T) {
 		t.Error("Journal should have id!")
 	}
 
-	count, err := DeleteJournal(journal.Id)
+	count, err := deleteJournal(journal.Id)
 
 	if count == 0 {
 		t.Error("Test journal should be removed!")

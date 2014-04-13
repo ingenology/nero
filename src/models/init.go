@@ -10,15 +10,15 @@ var (
 	DBPOOL = &ConnectionPoolWrapper{}
 )
 
-func Init() {
-	DBPOOL.InitPool(100, initDb)
+func Init(poolSize int) {
+	DBPOOL.InitPool(poolSize, initDb)
 
 	conn := DBPOOL.GetConnection()
 	defer DBPOOL.ReleaseConnection(conn)
 }
 
 func initDb() (*gorp.DbMap, error) {
-	db, connectionError := sql.Open("mymysql", "tcp:localhost:3306*test/root/")
+	db, connectionError := sql.Open("mymysql", "tcp:localhost:3306*test/root/admin")
 
 	if connectionError != nil {
 		panic(connectionError)
@@ -27,6 +27,7 @@ func initDb() (*gorp.DbMap, error) {
 	dbmap := &gorp.DbMap{Db: db, Dialect: gorp.MySQLDialect{"InnoDB", "LATIN_SWEDISH_CI"}}
 
 	dbmap.AddTableWithName(Journal{}, "journals").SetKeys(true, "Id")
+	dbmap.AddTableWithName(User{}, "users").SetKeys(true, "Id")
 	dbmap.CreateTables()
 
 	return dbmap, nil

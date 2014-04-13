@@ -1,26 +1,27 @@
 package main
 
 import (
-	"controllers"
-	"fmt"
-	"github.com/gorilla/mux"
 	"models"
 	"net/http"
-	// "tests"
+	"controllers"
+	"github.com/gorilla/mux"
 )
 
 func main() {
-	models.Init()
-	// tests.RegisterTest()
-	// tests.LoginTest()
-	r := mux.NewRouter()
-	r.HandleFunc("/test", controllers.HandleIndexPage).Methods("GET")
+	models.Init(100)
 
-	http.HandleFunc("/tmpl/", func(w http.ResponseWriter, r *http.Request) {
+	router := mux.NewRouter()
+
+	controllers.RegisterJournalHandlers(router)
+
+	router := mux.NewRouter()
+	router.HandleFunc("/register", controllers.HandleRegister).Methods("POST")
+	router.HandleFunc("/login", controllers.HandleLogin).Methods("POST")
+
+	http.HandleFunc("/static/", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, r.URL.Path[1:])
 	})
 
-	http.Handle("/", r)
-	fmt.Println("Init server")
+	http.Handle("/", router)
 	http.ListenAndServe(":8080", nil)
 }
