@@ -19,7 +19,7 @@ CREATE TABLE journals (
   title VARCHAR(255) NOT NULL,
   latitude FLOAT(20) NOT NULL,
   longitude FLOAT(20) NOT NULL,
-  create_date long NOT NULL,
+  create_date LONG NOT NULL,
   notes VARCHAR(255),
   hashtags VARCHAR(255),
   altitude FLOAT(20),

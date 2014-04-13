@@ -1,8 +1,8 @@
 package models
 
 import (
-	"github.com/coopernurse/gorp"
 	"database/sql"
+	"github.com/coopernurse/gorp"
 	_ "github.com/ziutek/mymysql/godrv"
 )
 
@@ -18,7 +18,7 @@ func Init() {
 }
 
 func initDb() (*gorp.DbMap, error) {
-	db, connectionError := sql.Open("mymysql", "tcp:localhost:3306/test/")
+	db, connectionError := sql.Open("mymysql", "tcp:localhost:3306*test/root/")
 
 	if connectionError != nil {
 		panic(connectionError)

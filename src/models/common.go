@@ -5,7 +5,7 @@ import (
 	"github.com/coopernurse/gorp"
 )
 
-type dbAccess func(datasource *gorp.DbMap) (interface{}, error)
+type dbAccess func(*gorp.DbMap) (interface{}, error)
 
 func dbTemplate(access dbAccess) (interface{}, error) {
 	datasource := DBPOOL.GetConnection()
