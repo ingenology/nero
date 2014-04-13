@@ -34,8 +34,9 @@
  *  $_FOOTER
  *    - General
  *
- *  $_USER PROFILE
- *    - General
+ *  $_PAGES
+ *    - Dashboard
+ *    - Entry Detail
  *
  */
 /* ==========================================================================
@@ -5079,6 +5080,12 @@ td.visible-print {
 body {
   font-size: 16px; }
 
+a:hover {
+  text-decoration: none; }
+
+h1 {
+  margin-top: 0; }
+
 /* - - - - - - - - - - - - - - - - * // * - - - - - - - - - - - - - - - - -  */
 /* ==========================================================================
  $_NAVIGATION
@@ -5121,6 +5128,12 @@ body {
     .wrapper-appNav .nav li {
       display: block;
       width: 100%; } }
+.banner {
+  position: relative;
+  background: url("../images/userProfile/profile_banner.jpg") black;
+  min-height: 4em;
+  border-bottom: 2px solid #e6e6e6; }
+
 /* - - - - - - - - - - - - - - - - * // * - - - - - - - - - - - - - - - - -  */
 /* ==========================================================================
  $_FOOTER
@@ -5135,16 +5148,13 @@ footer {
 
 /* - - - - - - - - - - - - - - - - * // * - - - - - - - - - - - - - - - - -  */
 /* ==========================================================================
- $_USER PROFILE
+ $_PAGES
  ========================================================================== */
 /* --------------------------------------------------------------------------
- General Styles
+ Dashboard
  -------------------------------------------------------------------------- */
 .banner-userProfile {
-  position: relative;
-  background: url("../images/userProfile/profile_banner.jpg") black;
-  min-height: 12em;
-  border-bottom: 2px solid #e6e6e6; }
+  min-height: 12em; }
   .banner-userProfile .wrapper-userProfile {
     position: absolute;
     top: 2.25em;
@@ -5163,6 +5173,7 @@ footer {
   padding-top: 5em; }
   .user-journals .addEntry {
     width: 100%;
+    display: block;
     background: orange;
     padding: 0.25em 0.25em 0.1em;
     text-align: center;
@@ -5172,6 +5183,7 @@ footer {
     border-bottom: 0.15em solid orange; }
     .user-journals .addEntry:hover {
       cursor: pointer;
+      text-decoration: none;
       background: #e69500;
       border-bottom: 0.15em solid black; }
   .user-journals .title-entries {
@@ -5179,11 +5191,11 @@ footer {
     margin-bottom: 1em;
     color: #ccc; }
   .user-journals .entry {
+    display: block;
     background: #222222;
     color: #a2a2a2;
     margin-bottom: 2em;
-    -webkit-box-shadow: inset 0 1px 20px rgba(0, 0, 0, 0.075);
-    box-shadow: inset 0 1px 20px rgba(0, 0, 0, 0.075); }
+    max-width: 100%; }
     .user-journals .entry:hover {
       background: black;
       color: #eeeeee;
@@ -5219,3 +5231,33 @@ footer {
     display: block; }
   .user-journals time span:before {
     content: '' !important; } }
+/* --------------------------------------------------------------------------
+ Entry Detail
+ -------------------------------------------------------------------------- */
+.wrapper-entryDetail [role='navigation'] {
+  background: orange;
+  color: #fff;
+  margin-top: 1em;
+  margin-bottom: 2em; }
+  .wrapper-entryDetail [role='navigation']:hover {
+    background: #333; }
+.wrapper-entryDetail td:first-child {
+  font-weight: bold;
+  min-width: 100px; }
+.wrapper-entryDetail .uploadField {
+  background: #eee;
+  padding: 1em;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px; }
+  .wrapper-entryDetail .uploadField .imageFile {
+    background: #ccc;
+    padding: 0.25em;
+    margin-bottom: 0.25em; }
+    .wrapper-entryDetail .uploadField .imageFile .filesize {
+      color: #888; }
+
+@media (max-width: 48em) {
+  .wrapper-entryDetail [role='navigation'] {
+    width: 100%; } }

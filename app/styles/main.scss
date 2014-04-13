@@ -34,8 +34,9 @@
  *  $_FOOTER
  *    - General
  *
- *  $_USER PROFILE
- *    - General
+ *  $_PAGES
+ *    - Dashboard
+ *    - Entry Detail
  *
  */
 
@@ -127,6 +128,8 @@ $browser_context: 16;
  ========================================================================== */
 
 body { font-size: 16px; }
+a:hover { text-decoration: none; }
+h1 { margin-top: 0; }
 
 
 
@@ -184,6 +187,18 @@ body { font-size: 16px; }
 	}
 }
 
+.banner {
+  $base-color_banner: black;
+  position: relative;
+  background: url("../images/userProfile/profile_banner.jpg") $base-color_banner;
+  min-height: 4em;
+  border-bottom: 2px solid lighten($base-color_banner, 90%);
+  padding-top: 3em;
+  padding-bottom: 3em;
+  text-align: center;
+  h1 { color: #fff; }
+}
+
 
 
 
@@ -217,20 +232,17 @@ footer { color: #ccc; text-align: center; margin-top: 2em; }
 
 
 /* ==========================================================================
- $_USER PROFILE
+ $_PAGES
  ========================================================================== */
 
 /* --------------------------------------------------------------------------
- General Styles
+ Dashboard
  -------------------------------------------------------------------------- */
 
 .banner-userProfile {
-  $base-color_userProfile: black;
-  position: relative;
-  background: url("../images/userProfile/profile_banner.jpg") $base-color_userProfile;
   min-height: 12em;
-  border-bottom: 2px solid lighten($base-color_userProfile, 90%);
   .wrapper-userProfile {
+	$base-color_banner: black;
 	position: absolute;
 	top: 2.25em;
 	width: 100%;
@@ -238,7 +250,7 @@ footer { color: #ccc; text-align: center; margin-top: 2em; }
 	.userProfile {
 	  margin: 0 auto;
 	  max-width: 200px;
-	  border: 4px solid lighten($base-color_userProfile, 85%);
+	  border: 4px solid lighten($base-color_banner, 85%);
 
 	  // Rounded Corners
 	  $userProfile-corner: 100px;
@@ -253,6 +265,7 @@ footer { color: #ccc; text-align: center; margin-top: 2em; }
   padding-top: 5em;
   .addEntry {
 	width: 100%;
+	display: block;
 	background: orange;
 	padding: 0.25em 0.25em 0.1em;
 	text-align: center;
@@ -262,6 +275,7 @@ footer { color: #ccc; text-align: center; margin-top: 2em; }
 	border-bottom: 0.15em solid orange;
 	&:hover {
 	  cursor: pointer;
+	  text-decoration: none;
 	  background: darken(orange, 5%);
 	  border-bottom: 0.15em solid darken(orange, 50%);
 	}
@@ -273,10 +287,11 @@ footer { color: #ccc; text-align: center; margin-top: 2em; }
   }
   .entry {
 	$color-entry-bg: #222;
+	display: block;
 	background: $color-entry-bg;
 	color: lighten($color-entry-bg, 50%);
 	margin-bottom: 2em;
-  	@include box-shadow(inset 0 1px 20px rgba(0, 0, 0, 0.075));
+	max-width: 100%;
 	&:hover {
 	  background: darken($color-entry-bg, 35%);
 	  color: lighten($color-entry-bg, 80%);
@@ -328,5 +343,48 @@ footer { color: #ccc; text-align: center; margin-top: 2em; }
 		span { display: block; }
 		span:before { content: '' !important; }
 	  }
+  }
+}
+
+
+
+/* --------------------------------------------------------------------------
+ Entry Detail
+ -------------------------------------------------------------------------- */
+
+.wrapper-entryDetail {
+	[role='navigation'] {
+	  background: orange;
+	  color: #fff;
+	  margin-top: 1em;
+	  margin-bottom: 2em;
+	  &:hover { background: #333; }
+	}
+	td:first-child { font-weight: bold; min-width: 100px; }
+  	.uploadField {
+	  background: #eee;
+	  padding: 1em;
+
+	  // Rounded Corners
+	  $uploadField-corner: 10px;
+	  -moz-border-radius: $uploadField-corner;
+	  -webkit-border-radius: $uploadField-corner;
+	  -khtml-border-radius: $uploadField-corner;
+	  border-radius: $uploadField-corner;
+
+	  .imageFile {
+		background: #ccc;
+		padding: 0.25em;
+		margin-bottom: 0.25em;
+		.filesize { color: #888; }
+	  }
+	}
+}
+
+@media (max-width: em(768)) {
+  .wrapper-entryDetail {
+	[role='navigation'] {
+	  width: 100%;
+	}
   }
 }
