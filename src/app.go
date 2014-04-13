@@ -1,16 +1,14 @@
 package main
 
 import (
-	"models"
-	"net/http"
 	"controllers"
 	"github.com/gorilla/mux"
+	"models"
+	"net/http"
 )
 
 func main() {
 	models.Init(100)
-
-	router := mux.NewRouter()
 
 	controllers.RegisterJournalHandlers(router)
 
