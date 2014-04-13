@@ -5122,12 +5122,10 @@ h1 {
     float: none;
     text-align: center; }
   .wrapper-appNav #logo {
-    display: block; }
+    display: block;
+    margin-bottom: 0.25em; }
   .wrapper-appNav .nav {
-    margin-top: 1em; }
-    .wrapper-appNav .nav li {
-      display: block;
-      width: 100%; } }
+    display: none; } }
 .banner {
   position: relative;
   background: url("../images/userProfile/profile_banner.jpg") black;
@@ -5300,3 +5298,14 @@ footer {
       display: block; }
     .wrapper-addEntry .readoutWait img {
       margin: 0 0 1em 0; } }
+/* --------------------------------------------------------------------------
+ Login Page
+ -------------------------------------------------------------------------- */
+.wrapper-login {
+  background: url("../images/login/login-bg.jpg") center;
+  padding: 6em 0; }
+  .wrapper-login .btn {
+    background: orange;
+    color: #fff; }
+    .wrapper-login .btn:hover {
+      background: #faa200; }
