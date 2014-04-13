@@ -1,13 +1,19 @@
 package main
 
 import (
-	"fmt"
 	"models"
-	"tests"
+	"net/http"
+	"controllers"
+	"github.com/gorilla/mux"
 )
 
 func main() {
-	models.Init()
-	tests.RegisterTest()
-	fmt.Println("Init server")
+	models.Init(100)
+
+	router := mux.NewRouter()
+
+	controllers.RegisterJournalHandlers(router)
+
+	http.Handle("/", router)
+	http.ListenAndServe(":8080", nil)
 }
