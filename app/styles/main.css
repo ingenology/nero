@@ -5132,7 +5132,12 @@ h1 {
   position: relative;
   background: url("../images/userProfile/profile_banner.jpg") black;
   min-height: 4em;
-  border-bottom: 2px solid #e6e6e6; }
+  border-bottom: 2px solid #e6e6e6;
+  padding-top: 3em;
+  padding-bottom: 3em;
+  text-align: center; }
+  .banner h1 {
+    color: #fff; }
 
 /* - - - - - - - - - - - - - - - - * // * - - - - - - - - - - - - - - - - -  */
 /* ==========================================================================
@@ -5261,3 +5266,8 @@ footer {
 @media (max-width: 48em) {
   .wrapper-entryDetail [role='navigation'] {
     width: 100%; } }
+/* --------------------------------------------------------------------------
+ Add New Entry
+ -------------------------------------------------------------------------- */
+.wrapper-addEntry .banner {
+  margin-bottom: 2em; }
