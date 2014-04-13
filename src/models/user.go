@@ -2,6 +2,7 @@ package models
 
 import (
 	"crypto/sha1"
+	"fmt"
 )
 
 type User struct {
@@ -51,10 +52,11 @@ func hashString(password string) string {
 func getUserByEmail(email string) (user *User) {
 	dbmap := DBPOOL.GetConnection()
 	defer DBPOOL.ReleaseConnection(dbmap)
-	query := "select * from user where user.Email =? limit 1"
+	query := "select * from users where users.email =? limit 1"
 	var results []*User
-	_, userSearchErr := dbmap.Select(&results, query, user.Email)
+	_, userSearchErr := dbmap.Select(&results, query, email)
 	if userSearchErr != nil || len(results) == 0 {
+		fmt.Println(userSearchErr)
 		return nil
 	}
 	return results[0]

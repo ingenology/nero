@@ -9,11 +9,15 @@ angular.module('neroApp', [
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/userJournal.html',
+                templateUrl: 'views/dashboard.html',
                 controller: 'MainCtrl'
             })
             .when('/addEntry', {
                 templateUrl: 'views/addEntry.html',
+                controller: 'MainCtrl'
+            })
+            .when('/entryDetail', {
+                templateUrl: 'views/entryDetail.html',
                 controller: 'MainCtrl'
             })
             .otherwise({

@@ -5,7 +5,7 @@
       <paths name="TMTGrid_testNero">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$/app" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$/dist" web="/" />
           </mappings>
         </serverdata>
       </paths>

@@ -204,6 +204,7 @@ module.exports = function (grunt) {
     },
 
     // Performs rewrites based on rev and the useminPrepare configuration
+    // TODO Figure out why css images aren't being referenced after compile.
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],

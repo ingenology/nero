@@ -8,3 +8,6 @@ angular.module('neroApp')
       'Karma'
     ];
   });
+
+// Fade Page In
+$('.fade-in').hide().fadeIn(2000);
