@@ -18,8 +18,7 @@ func Init(poolSize int) {
 }
 
 func initDb() (*gorp.DbMap, error) {
-	// db, connectionError := sql.Open("mymysql", "tcp:localhost:8889*nero/root/root")
-	db, connectionError := sql.Open("mymysql", "tcp:nerostage.crb1s2erorsz.us-west-2.rds.amazonaws.com:3306*nero/nero/thecoolproject")
+	db, connectionError := sql.Open("mymysql", "tcp:localhost:8889*nero/root/root")
 
 	if connectionError != nil {
 		panic(connectionError)
