@@ -12,6 +12,10 @@ angular.module('neroApp', [
                 templateUrl: 'views/dashboard.html',
                 controller: 'MainCtrl'
             })
+            .when('/login', {
+                templateUrl: 'views/login.html',
+                controller: 'MainCtrl'
+            })
             .when('/addEntry', {
                 templateUrl: 'views/addEntry.html',
                 controller: 'MainCtrl'

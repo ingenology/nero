@@ -179,11 +179,11 @@ h1 { margin-top: 0; }
 	.wrapper-appNav {
 	  #logo, .nav { float: none; text-align: center; }
 	  #logo {
-		display: block;;
+		display: block;
+		margin-bottom: 0.25em;
 	  }
 	  .nav {
-		margin-top: 1em;
-		li { display: block; width: 100%; }
+		display: none;
 	  }
 	}
 }
@@ -418,5 +418,19 @@ footer { color: #ccc; text-align: center; margin-top: 2em; }
 	  span { display: block; }
 	  img { margin: 0 0 1em 0; }
 	}
+  }
+}
+
+/* --------------------------------------------------------------------------
+ Login Page
+ -------------------------------------------------------------------------- */
+
+.wrapper-login {
+  background: url("../images/login/login-bg.jpg") center;
+  padding: 6em 0;
+  .btn {
+	background: orange;
+	color: #fff;
+	&:hover { background: darken(orange, 5%); }
   }
 }
