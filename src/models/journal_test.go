@@ -1,9 +1,6 @@
 package models
 
-import (
-	"fmt"
-	"testing"
-)
+import "testing"
 
 func TestJournalModel(t *testing.T) {
 	Init(100)
@@ -22,11 +19,16 @@ func TestJournalModel(t *testing.T) {
 
 	if err != nil {
 		t.Errorf("Cannot insert journal")
-		fmt.Println(err)
 	}
 
 	if journal.Id == 0 {
 		t.Error("Journal should have id!")
+	}
+
+	journals, err := GetJournalsByUserId(1)
+
+	if len(journals) == 0 {
+		t.Error("Should have test journal in DB!")
 	}
 
 	count, err := deleteJournal(journal.Id)

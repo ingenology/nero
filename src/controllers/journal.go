@@ -5,6 +5,7 @@ import (
 	"strconv"
 	"net/http"
 	"github.com/gorilla/mux"
+	"encoding/json"
 )
 
 func RegisterJournalHandlers(router *mux.Router) {
@@ -24,9 +25,15 @@ func getJournalHandler(resWriter http.ResponseWriter, req *http.Request) {
 		resWriter.Write([]byte("Invalid user id!"))
 	}
 
-	_, err = models.GetJournals(int32(userId))
+	journals, err := models.GetJournalsByUserId(int32(userId))
 
 	if err != nil {
 		resWriter.Write([]byte("No journals found!"))
+	}
+
+	journalsJSON, err := json.Marshal(journals)
+
+	if err == nil {
+		resWriter.Write(journalsJSON)
 	}
 }

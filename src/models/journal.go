@@ -4,13 +4,13 @@ import "github.com/coopernurse/gorp"
 
 type Journal struct {
 	Id         int32   `db:"id"`
-	UserId     int32   `db:"user_id"`
-	Title      string  `db:"title"`
-	Latitude   float64 `db:"latitude"`
-	Longitude  float64 `db:"longitude"`
-	CreateDate int64   `db:"create_date"`
-	Azimuth    float64 `db:"azimuth"`
-	Altitude   float64 `db:"altitude"`
+	UserId     int32   `db:"user_id" json:"user_id"`
+	Title      string  `db:"title" json:"title"`
+	Latitude   float64 `db:"latitude" json:"latitude"`
+	Longitude  float64 `db:"longitude" json:"longitude"`
+	CreateDate int64   `db:"create_date" json:"create_date"`
+	Azimuth    float64 `db:"azimuth" json:"azimuth"`
+	Altitude   float64 `db:"altitude" json:"altitude"`
 }
 
 func InsertJournal(journal *Journal) error {
@@ -23,20 +23,20 @@ func InsertJournal(journal *Journal) error {
 	return err
 }
 
-const GetJournalSQL = `
+const GetJournalsByUserIdSQL = `
 	SELECT j.id, j.user_id, j.title, j.latitude, j.longitude, j.create_date, j.azimuth, j.altitude
 	FROM journals j
-	WHERE j.id = ?
+	WHERE j.user_id = ?
 `
-func GetJournals(journalId int32) (*Journal, error) {
+func GetJournalsByUserId(journalId int32) ([]*Journal, error) {
 	result, err := dbTemplate(func(datasource *gorp.DbMap) (interface{}, error) {
-		container := &Journal{}
-		err := datasource.SelectOne(container, GetJournalSQL, journalId)
+		container := []*Journal{}
+		_, err := datasource.Select(&container, GetJournalsByUserIdSQL, journalId)
 
 		return container, err
 	})
 
-	return result.(*Journal), err
+	return result.([]*Journal), err
 }
 
 const DeleteJournalSQL = `

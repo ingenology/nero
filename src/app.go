@@ -14,7 +14,6 @@ func main() {
 
 	controllers.RegisterJournalHandlers(router)
 
-	router := mux.NewRouter()
 	router.HandleFunc("/register", controllers.HandleRegister).Methods("POST")
 	router.HandleFunc("/login", controllers.HandleLogin).Methods("POST")
 
