@@ -15,6 +15,7 @@ func main() {
 	// tests.LoginTest()
 	r := mux.NewRouter()
 	r.HandleFunc("/register", controllers.HandleRegister).Methods("GET")
+	r.HandleFunc("/login", controllers.HandleLogin).Methods("POST")
 
 	http.HandleFunc("/static/", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, r.URL.Path[1:])
