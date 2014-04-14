@@ -16,5 +16,4 @@ func RegisterTest() {
 
 func LoginTest() {
 	fmt.Println(models.Login("test@gmail.com", "test"))
-
 }
