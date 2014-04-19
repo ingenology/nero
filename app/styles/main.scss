@@ -64,6 +64,8 @@ $icon-font-path: "../../bower_components/sass-bootstrap/fonts/";
  -------------------------------------------------------------------------- */
 // TODO Go through the styles and shore up colors into variables properly.
 $color-navbg: #fafafa;
+$color-primary-light: #ccc;
+$color-primary-dark: #333;
 
 
 /* --------------------------------------------------------------------------
@@ -128,8 +130,17 @@ $browser_context: 16;
  $_GLOBAL
  ========================================================================== */
 
-body { font-size: 16px; }
-a:hover { text-decoration: none; }
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+body {
+  background: lighten($color-primary-dark, 1%);
+  min-width: 300px;
+  color: $color-primary-light;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  a:hover { text-decoration: none; }
+}
+ul, li { list-style: none; }
 h1 { margin-top: 0; }
 
 
@@ -152,52 +163,109 @@ h1 { margin-top: 0; }
  General Styles
  -------------------------------------------------------------------------- */
 
-.wrapper-appNav {
-  background: $color-navbg;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  h1 { margin: 0; }
-  .nav-pills {
-	float: right;
-	a {
-	  color: darken($color-navbg, 90%);
-	  &:hover {
-		background: darken($color-navbg, 80%);
-		color: darken($color-navbg, 25%);
+.nav-primary {
+  background-image: -o-linear-gradient(-90deg, #444444 0%, #222222 100%);
+  background-image: -moz-linear-gradient(-90deg, #444444 0%, #222222 100%);
+  background-image: -webkit-linear-gradient(-90deg, #444444 0%, #222222 100%);
+  background-image: -ms-linear-gradient(-90deg, #444444 0%, #222222 100%);
+  background-image: linear-gradient(-180deg, #444444 0%, #222222 100%);
+  -moz-box-shadow:    0px 2px 4px 0px rgba(0,0,0,0.50);
+  -webkit-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50);
+  box-shadow:         0px 2px 4px 0px rgba(0,0,0,0.50);
+  font-size: 16px;
+  padding-top: 0.25em;
+  width: 100%;
+  min-width: 300px;
+  .logo { float: left; }
+  .logo img { padding-top: 0.25em; }
+  img { max-height: 2.5em; }
+  .nav-primary-links {
+	ul { float: right; }
+	li {
+	  margin: 0 0.5em;
+	  text-align: center;
+	  float: left;
+	  a {
+		display: block;
+		padding-right: 0.5em;
+		color: darken($color-primary-light, 20%);
+		text-align: center;
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+		border-bottom: 6px solid transparent;
+		transition: border-bottom 0.75s ease-out;
+		&:hover { color: lighten($color-primary-light, 20%); }
+	  }
+	  a.active {
+		border-color: orange;
+		color: lighten($color-primary-light, 20%);
+		.link-fieldGuide { }
 	  }
 	}
-	.active a { background: darken($color-navbg, 90%); }
-	border-radius: 0;
   }
 }
-#logo {
-  float: left;
-  img {height: 40px;}
+@media (max-width: 900px) {
+  .nav-primary-links span { display: none; }
 }
-
-@media (max-width: em(768)) {
-	.wrapper-appNav {
-	  #logo, .nav { float: none; text-align: center; }
-	  #logo {
-		display: block;
-		margin-bottom: 0.25em;
-	  }
-	  .nav {
-		display: none;
-	  }
+@media (max-width: 480px) {
+  .logo {
+	display: block;
+	text-align: center;
+	width: 100%;
+	float: none !important;
+	border-bottom: 1px solid $color-primary-dark;
+	padding-bottom: 0.5em;
+  }
+  .nav-primary-links {
+	margin: 0 auto;
+	text-align: center;
+	border-top: 1px solid lighten($color-primary-dark, 5%);
+	ul {
+	  float: none !important;
+	  display: inline-block;
+	  margin-top: 0.5em;
 	}
+  }
 }
-
 .banner {
-  $base-color_banner: black;
+  background: url('https://s3-us-west-2.amazonaws.com/nero.app/images/profile_banner.jpg') center no-repeat black;
+  background-size: cover;
+  padding-top: 4em;
+  height: 16em;
+  transition: background 3s ease;
+  border-bottom: 6px solid darken($color-primary-dark, 3%);
   position: relative;
-  background: url("../images/userProfile/profile_banner.jpg") $base-color_banner;
-  min-height: 4em;
-  border-bottom: 2px solid lighten($base-color_banner, 90%);
-  padding-top: 3em;
-  padding-bottom: 3em;
   text-align: center;
-  h1 { font-size: 2em; color: #fff; }
+  .profilePic {
+	margin: 0 auto;
+	box-shadow: 0 0 0.25em darken($color-primary-dark, 4%);
+	background-color: lighten($color-primary-dark, 3%);
+	padding: 1px;
+	border-radius: 6em;
+	margin-top: 2.25em;
+	width: 200px;
+	border: 1px solid darken($color-primary-dark, 5%);
+	img {
+	  background-color: $color-primary-dark;
+	  width: 100%;
+	  border-radius: 6em;
+	  padding: 0.5em;
+	  border: 1px solid darken($color-primary-dark, 3%);
+	}
+  }
+}
+@media (min-width: 960px) {
+  .banner {
+	background-image: url('https://s3-us-west-2.amazonaws.com/nero.app/images/profile_banner_lg.jpg');
+	background-position: 40%;
+  }
+
+}
+@media (max-width: 480px) {
+  .banner {
+	height: 20em;
+	.profilePic { margin-top: 6em; }
+  }
 }
 
 
@@ -395,9 +463,18 @@ footer { color: #ccc; text-align: center; margin-top: 2em; }
  -------------------------------------------------------------------------- */
 
 .wrapper-addEntry {
-  .banner { margin-bottom: 2em; }
-  .btn .inactive { }
-  .capturePosData { color: lighten(orange, 55%); background: orange; width: 100%; font-size: 1.25em; padding: 1.5em 1em; }
+  margin-top: 2em;
+  .btn {
+	width: 100%;
+	font-size: 1.25em;
+	padding: 1.5em 1em;
+	margin-bottom: 1em;
+  }
+  .capturePosData {
+	color: lighten(orange, 55%);
+	background: orange;
+	&:hover { background: darken(orange, 15%); }
+  }
   .posDataReadout {
 	.readoutWait img { width: 3em; margin-right: 1em; }
 	font-weight: bold;
@@ -408,6 +485,11 @@ footer { color: #ccc; text-align: center; margin-top: 2em; }
 	padding: 1em;
 	color: #999;
 	.data { display: none; }
+  }
+  .nextStep {
+	color: #fff;
+	background: #222;
+	&:hover { background: #555; }
   }
 }
 
@@ -434,3 +516,9 @@ footer { color: #ccc; text-align: center; margin-top: 2em; }
 	&:hover { background: darken(orange, 5%); }
   }
 }
+
+/* --------------------------------------------------------------------------
+ Field Guide
+ -------------------------------------------------------------------------- */
+
+.wrapper-fieldGuide { margin-top: 2em; }

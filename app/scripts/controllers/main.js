@@ -39,3 +39,14 @@ function showPosition(position) {
     $('.capturePosData').html('Recapture Data');
 
 }
+
+/* --------------------------------------------------------------------------
+ Navigation Interaction
+ -------------------------------------------------------------------------- */
+
+$('.nav-primary li > a').click(
+    function() {
+        $('.nav-primary li > a').removeClass('active');
+        $(this).addClass('active');
+    }
+);

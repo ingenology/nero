@@ -4,6 +4,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
+	<!-- TODO Make sure to flesh this out -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
@@ -24,17 +25,33 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <!-- Add your site or application content here -->
-    <div class="wrapper-appNav">
+    <nav class="nav-primary navbar-static-top" role="navigation">
 	    <div class="container">
-		    <div class="header">
-			    <h1 id="logo"><a ng-href="/"><img src="images/logo-lg.png"></a></h1>
-			    <ul class="nav nav-pills">
-				    <li class="active"><a ng-href="/">Dashboard</a></li>
-				    <li><a ng-href="#/addEntry">Add Entry</a></li>
+		    <a class="logo" href="#"><img src="http://imgur.com/7AVTwnD.png"></a>
+		    <div class="nav-primary-links">
+			    <ul>
+				    <li>
+					    <a href="#/">
+						    <img class="nav-icon link-entryList" src="https://s3-us-west-2.amazonaws.com/nero.app/images/list_default.png">
+						    <span>Entry List</span>
+					    </a>
+				    </li>
+				    <li>
+					    <a href="#/fieldGuide" class="active">
+						    <img class="nav-icon link-fieldGuide" src="https://s3-us-west-2.amazonaws.com/nero.app/images/guide_default.png">
+						    <span>Field Guide</span>
+					    </a>
+				    </li>
+				    <li>
+					    <a href="#/addEntry">
+						    <img class="nav-icon link-addEntry" src="https://s3-us-west-2.amazonaws.com/nero.app/images/add_default.png">
+						    <span>Add Entry</span>
+					    </a>
+				    </li>
 			    </ul>
-		    </div>
-	    </div>
-    </div><!-- /.wrapper-appNav -->
+		    </div><!-- /.nav-primary-links -->
+	    </div><!-- /.container -->
+    </nav>
 
     <div class="wrapper-app" ng-view=""></div>
 

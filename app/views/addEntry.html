@@ -1,37 +1,35 @@
 <div class="wrapper-addEntry">
-	<header class="banner">
-		<h1>Add New Journal Entry</h1>
-	</header>
 
-<div class="container">
-	<p>Please enter your journal entry data, then make sure your phone is secured within the hotshoe mount and positioned towards your target photo frame. Then, capture your position data and get ready to shoot!</p>
-	<form role="form">
-		<div class="form-group">
-			<label for="newEntry-title">Entry Title</label>
-			<input type="email" class="form-control" id="newEntry-title" placeholder="Enter a title for your journal entry.">
-		</div>
-		<div class="form-group">
-			<label for="newEntry-Tags">Tags (comma separated)</label>
-			<textarea id="newEntry-Tags" class="form-control" rows="3" placeholder="Add any tags you'd like to add to your entry."></textarea>
-		</div>
-		<div class="form-group">
-			<label for="newEntry-Notes">Associated Notes</label>
-			<textarea id="newEntry-Notes" class="form-control" rows="3" placeholder="Enter any field notes."></textarea>
-		</div>
-		<div class="posDataReadout">
-			<div class="readoutWait">
-				<img src="images/progress/getPosition.gif">
-				<span>Gathering Position Data From Your Device...</span>
-			</div><!-- /.status -->
-			<div class="data">
-				<div class="data-lat"></div>
-				<div class="data-long"></div>
-				<div class="data-azi"></div>
-				<div class="data-alt"></div>
-			</div><!-- /.data -->
-		</div><!-- /.posDataReadout -->
-		<button onclick="getLocation()" class="btn capturePosData">Capture Position, Direction, Altitude</button>
-	</form>
-</div><!-- /.container -->
+	<div class="container">
+		<p>Please enter your journal entry data, then make sure your phone is secured within the hotshoe mount and positioned towards your target photo frame. Then, capture your position data and get ready to shoot!</p>
+		<form role="form">
+			<div class="form-group">
+				<label for="newEntry-title">Entry Title</label>
+				<input type="email" class="form-control" id="newEntry-title" placeholder="Enter a title for your journal entry.">
+			</div>
+			<div class="form-group">
+				<label for="newEntry-Tags">Tags (comma separated)</label>
+				<textarea id="newEntry-Tags" class="form-control" rows="3" placeholder="Add any tags you'd like to add to your entry."></textarea>
+			</div>
+			<div class="form-group">
+				<label for="newEntry-Notes">Associated Notes</label>
+				<textarea id="newEntry-Notes" class="form-control" rows="3" placeholder="Enter any field notes."></textarea>
+			</div>
+			<div class="posDataReadout">
+				<div class="readoutWait">
+					<img src="images/progress/getPosition.gif">
+					<span>Gathering Position Data From Your Device...</span>
+				</div><!-- /.status -->
+				<div class="data">
+					<div class="data-lat"></div>
+					<div class="data-long"></div>
+					<div class="data-azi"></div>
+					<div class="data-alt"></div>
+				</div><!-- /.data -->
+			</div><!-- /.posDataReadout -->
+			<button onclick="getLocation()" class="btn capturePosData">Capture Position, Direction, Altitude</button>
+			<button class="btn btn-large nextStep" onclick="window.location.href='#/'">Start Shooting!</button>
+		</form>
+	</div><!-- /.container -->
 
 </div><!-- /.wrapper-addEntry -->

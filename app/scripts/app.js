@@ -9,7 +9,11 @@ angular.module('neroApp', [
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/dashboard.html',
+                templateUrl: 'views/entryList.html',
+                controller: 'MainCtrl'
+            })
+            .when('/fieldGuide', {
+                templateUrl: 'views/fieldGuide.html',
                 controller: 'MainCtrl'
             })
             .when('/login', {
