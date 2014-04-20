@@ -308,110 +308,71 @@ footer { color: #ccc; text-align: center; margin-top: 2em; }
  Dashboard
  -------------------------------------------------------------------------- */
 
-.banner-userProfile {
-  min-height: 12em;
-  .wrapper-userProfile {
-	$base-color_banner: black;
-	position: absolute;
-	top: 2.25em;
-	width: 100%;
-	text-align: center;
-	.userProfile {
-	  margin: 0 auto;
-	  max-width: 200px;
-	  border: 4px solid lighten($base-color_banner, 85%);
-
-	  // Rounded Corners
-	  $userProfile-corner: 100px;
-	  -moz-border-radius: $userProfile-corner;
-	  -webkit-border-radius: $userProfile-corner;
-	  -khtml-border-radius: $userProfile-corner;
-	  border-radius: $userProfile-corner;
-	}
-  }
-}
-.user-journals {
-  padding-top: 5em;
-  .addEntry {
-	width: 100%;
+.entryList {
+  margin-bottom: 2em;
+  margin-top: 4em;
+  .wrapper-entry {
 	display: block;
-	background: orange;
-	padding: 0.25em 0.25em 0.1em;
-	text-align: center;
-	margin-bottom: 2em;
-	font-size: 2em;
-	color: #fff;
-	border-bottom: 0.15em solid orange;
+	color: $color-primary-light;
+	background: darken($color-primary-dark, 20%);
+	margin-bottom: 0.75em;
+	overflow: hidden;
+	border: 2px solid lighten($color-primary-dark, 5%);
+	box-shadow: 0 0 0.25em darken($color-primary-dark, 10%) inset, 0 0 0.25em darken($color-primary-dark, 8%);
+	border-radius: 0.5em;
 	&:hover {
 	  cursor: pointer;
-	  text-decoration: none;
-	  background: darken(orange, 5%);
-	  border-bottom: 0.15em solid darken(orange, 50%);
+	  background: darken($color-primary-dark, 10%);
+	  border-color: orange;
 	}
-  }
-  .title-entries {
-	text-align: center;
-	margin-bottom: 1em;
-	color: #ccc;
-  }
-  .entry {
-	$color-entry-bg: #222;
-	display: block;
-	background: $color-entry-bg;
-	color: lighten($color-entry-bg, 50%);
-	margin-bottom: 2em;
-	max-width: 100%;
-	&:hover {
-	  background: darken($color-entry-bg, 35%);
-	  color: lighten($color-entry-bg, 80%);
-	  cursor: pointer;
-	}
+	h1, span { display: inline-block;}
+	* { line-height: 100%; font-size: 1.25em; margin: 0; }
+	.entryHeader { margin-top: 0.15em; font-size: 1em; padding: 0.4em; }
+	h1 { text-transform: capitalize; margin-right: 0.5em; }
 	.status {
-	  text-align: center;
-	  margin-bottom: 1em;
-	  font-size: 0.75em;
-	  color: #fff;
+	  float: right;
+	  text-transform: uppercase;
+	  padding: 0.5em;
 
 	  // Status Colors
 	  $color-status-submitted: #0367A6;
-	  $color-status-needImgs: #654673;
+	  $color-status-unfinished: #654673;
 	  $color-status-error: #F21D2F;
 
 	  &.submitted {
 		background: $color-status-submitted;
 		color: lighten($color-status-submitted, 50%);
 	  }
-	  &.needsImgs {
-		background: $color-status-needImgs;
-		color: lighten($color-status-needImgs, 50%);
+	  &.unfinished {
+		background: $color-status-unfinished;
+		color: lighten($color-status-unfinished, 50%);
 	  }
 	  &.error {
 		background: $color-status-error;
-		color: lighten($color-status-error, 75%);
+		color: lighten($color-status-error, 35%);
 	  }
 	}
-	.wrapper-title { padding: 0 1em; }
-	h1 {
-	  font-size: 1em;
-	  margin: 0;
-	}
-	time {
-	  span:before { content: 'at '; }
-	}
-	img {
-	  margin-top: 0.5em;
-	  max-width: 100%;
-	  border-top: 1px solid lighten($color-entry-bg, 15%);
+	.date, .time {
+	  font-size: 0.9em;
+	  margin-right: 0.25em;
+	  color: darken($color-primary-light, 25%);
 	}
   }
 }
 
-@media (max-width: em(768)) {
-  .user-journals {
-	  time {
-		span { display: block; }
-		span:before { content: '' !important; }
+@media (max-width: 600px) {
+  .entryList {
+	.wrapper-entry {
+	  margin-bottom: 1em;
+	  .status {
+		display: inline-block;
+		float: none;
+		padding-left: 1em;
+		padding-right: 1em;
+		font-size: 0.75em;
 	  }
+	  h1 { display: block; margin-bottom: 0.25em; }
+	}
   }
 }
 
@@ -423,15 +384,16 @@ footer { color: #ccc; text-align: center; margin-top: 2em; }
 
 .wrapper-entryDetail {
 	[role='navigation'] {
-	  background: orange;
+	  background: darken(orange, 10%);
 	  color: #fff;
 	  margin-top: 1em;
 	  margin-bottom: 2em;
-	  &:hover { background: #333; }
+	  &:hover { background: darken(orange, 15%); }
 	}
+  	.banner { max-height: 11em; }
 	td:first-child { font-weight: bold; min-width: 100px; }
   	.uploadField {
-	  background: #eee;
+	  background: darken($color-primary-dark, 5%);
 	  padding: 1em;
 
 	  // Rounded Corners
