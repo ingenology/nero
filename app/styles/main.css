@@ -5164,7 +5164,7 @@ h1 {
       display: inline-block;
       margin-top: 0.5em; } }
 .banner {
-  background: url("https://s3-us-west-2.amazonaws.com/nero.app/images/profile_banner.jpg") center no-repeat black;
+  background: url("../images/profile_banner.jpg") center no-repeat black;
   background-size: cover;
   padding-top: 4em;
   height: 16em;
@@ -5190,7 +5190,7 @@ h1 {
 
 @media (min-width: 960px) {
   .banner {
-    background-image: url("https://s3-us-west-2.amazonaws.com/nero.app/images/profile_banner_lg.jpg");
+    background-image: url("../images/profile_banner_lg.jpg");
     background-position: 40%; } }
 @media (max-width: 480px) {
   .banner {

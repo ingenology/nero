@@ -895,8 +895,8 @@ angular.module('neroApp')
                 "status":"unfinished",
                 "latitude":"19.755868482013113",
                 "longitude":"-67.88029731895918",
-                "azimuth":311.68,
-                "altitude":73.21
+                "azimuth": 311.68,
+                "altitude": 73.21
             },
             {
                 "id":89,
