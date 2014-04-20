@@ -47,22 +47,32 @@ function getLocation() {
     $('.readoutWait').show();
     $('.posDataReadout').show();
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(writePosition);
     } else {
         readout.html("Geolocation is not supported by this browser.");
     }
 }
 
-function showPosition(position) {
+function writePosition(position) {
+    runGyro();
     $('.data-lat').html('<div>Latitude: <span>' + position.coords.latitude + ' deg</span></div>');
     $('.data-long').html('<div>Longitude: <span>' + position.coords.longitude + ' deg</span></div>');
-    $('.data-azi').html('<div>Azimuth: <span>' + 89 + ' deg</span></div>');
-    $('.data-alt').html('<div>Altitude: <span>' + 65 + ' deg</span></div>');
     $('.readoutWait').hide();
     $('.posDataReadout .data').fadeIn();
     $('.capturePosData').html('Recapture Data');
 
 }
+
+function runGyro() {
+    gyro.frequency = 100;
+    gyro.startTracking(function(o) {
+        $('.data-azi').html('<div>Azimuth: <span>' + o.alpha + ' deg</span></div>');
+        $('.data-alt').html('<div>Altitude: <span>' + o.gamma + ' deg</span></div>');
+        gyro.stopTracking();
+    });
+    return true;
+}
+
 
 /* --------------------------------------------------------------------------
  Navigation Interaction
