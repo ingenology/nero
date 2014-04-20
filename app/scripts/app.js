@@ -18,19 +18,19 @@ angular.module('neroApp', [
             })
             .when('/fieldGuide', {
                 templateUrl: 'views/fieldGuide.html',
-                controller: 'MainCtrl'
+                controller: 'FieldGuideCtrl'
             })
             .when('/login', {
                 templateUrl: 'views/login.html',
-                controller: 'MainCtrl'
+                controller: 'LoginCtrl'
             })
             .when('/addEntry', {
                 templateUrl: 'views/addEntry.html',
-                controller: 'MainCtrl'
+                controller: 'AddEntryCtrl'
             })
             .when('/entryDetail', {
                 templateUrl: 'views/entryDetail.html',
-                controller: 'MainCtrl'
+                controller: 'EntryDetailCtrl'
             })
             .otherwise({
                 redirectTo: '/'
