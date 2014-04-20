@@ -24,7 +24,7 @@ CREATE TABLE journals (
   hashtags VARCHAR(255),
   altitude FLOAT(20),
   azimuth FLOAT(20),
-  gamma FLOAT(20),
+  status FLOAT(20),
 
   CONSTRAINT id_pk PRIMARY KEY (id)
 ) ENGINE = INNODB;
@@ -33,3 +33,19 @@ ALTER TABLE journals
 ADD CONSTRAINT user_id_fk
 FOREIGN KEY  journals(user_id)
 REFERENCES users(id);
+
+-- Journal table
+CREATE TABLE photos (
+  id INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+  journal_id INTEGER NOT NULL,
+  filename VARCHAR(255) NOT NULL,
+  type int NOT NULL,
+  image_location VARCHAR NOT NULL,
+  create_data LONG NOT NULL,
+  CONSTRAINT id_pk PRIMARY KEY (id)
+) ENGINE = INNODB;
+
+ALTER TABLE photos
+ADD CONSTRAINT photo_id_fk
+FOREIGN KEY  photos(journal_id)
+REFERENCES journals(id);

@@ -1,26 +1,60 @@
 package models
 
-import "github.com/coopernurse/gorp"
+import (
+	"github.com/coopernurse/gorp"
+	"strconv"
+	"time"
+)
 
 type Journal struct {
 	Id         int32   `db:"id"`
-	UserId     int32   `db:"user_id" json:"user_id"`
+	UserId     int     `db:"user_id" json:"user_id"`
 	Title      string  `db:"title" json:"title"`
 	Latitude   float64 `db:"latitude" json:"latitude"`
 	Longitude  float64 `db:"longitude" json:"longitude"`
 	CreateDate int64   `db:"create_date" json:"create_date"`
+	Notes      string  `db:"notes" json:"notes"`
+	Hashtabs   string  `db:"hashtags" json:"hashtags"`
 	Azimuth    float64 `db:"azimuth" json:"azimuth"`
 	Altitude   float64 `db:"altitude" json:"altitude"`
+	Status     int     `db:"status" json:"status"`
 }
 
-func InsertJournal(journal *Journal) error {
-	_, err := dbTemplate(func(datasource *gorp.DbMap) (interface{}, error) {
-		err := datasource.Insert(journal)
+func InsertJournal(
+	userId,
+	title,
+	latitude,
+	longitude,
+	notes,
+	hashtags,
+	altitude,
+	azimuth,
+	status string) (bool, int, string, int32) {
+	datasource := DBPOOL.GetConnection()
+	defer DBPOOL.ReleaseConnection(datasource)
+	userIdInt, _ := strconv.Atoi(userId)
+	latitudeFloat, _ := strconv.ParseFloat(latitude, 64)
+	longitudeFloat, _ := strconv.ParseFloat(longitude, 64)
+	azimuthFloat, _ := strconv.ParseFloat(azimuth, 64)
+	altitudeFloat, _ := strconv.ParseFloat(altitude, 64)
+	imageStatus, _ := strconv.Atoi(status)
+	journal := &Journal{
+		UserId:     userIdInt,
+		Title:      title,
+		Latitude:   latitudeFloat,
+		Longitude:  longitudeFloat,
+		CreateDate: time.Now().Unix(),
+		Notes:      notes,
+		Hashtabs:   hashtags,
+		Azimuth:    azimuthFloat,
+		Altitude:   altitudeFloat,
+		Status:     imageStatus}
 
-		return nil, err
-	})
-
-	return err
+	err := datasource.Insert(journal)
+	if err != nil {
+		return false, 500, "Database failure.", -1
+	}
+	return true, 200, "Successfully added journal entry.", journal.Id
 }
 
 const GetJournalsByUserIdSQL = `
@@ -28,20 +62,24 @@ const GetJournalsByUserIdSQL = `
 	FROM journals j
 	WHERE j.user_id = ?
 `
-func GetJournalsByUserId(journalId int32) ([]*Journal, error) {
-	result, err := dbTemplate(func(datasource *gorp.DbMap) (interface{}, error) {
-		container := []*Journal{}
-		_, err := datasource.Select(&container, GetJournalsByUserIdSQL, journalId)
 
-		return container, err
-	})
+func GetJournalsByUserId(journalId string) (bool, int, string, []*Journal) {
+	datasource := DBPOOL.GetConnection()
+	defer DBPOOL.ReleaseConnection(datasource)
+	container := []*Journal{}
+	_, err := datasource.Select(&container, GetJournalsByUserIdSQL, journalId)
 
-	return result.([]*Journal), err
+	if err != nil {
+		return false, 500, "Database Failure.", nil
+	}
+
+	return true, 200, "Successfully gathered journals.", container
 }
 
 const DeleteJournalSQL = `
 	DELETE FROM journals WHERE id = ?
 `
+
 func deleteJournal(journalId int32) (int64, error) {
 	rowCount, err := dbTemplate(func(datasource *gorp.DbMap) (interface{}, error) {
 		result, err := datasource.Exec(DeleteJournalSQL, journalId)

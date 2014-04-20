@@ -13,18 +13,23 @@ type User struct {
 	Last_name  string
 }
 
-func Register(user *User) (bool, int, string) {
+func Register(email, password, firstname, lastname string) (bool, int, string, int) {
+	user := &User{
+		First_name: firstname,
+		Last_name:  lastname,
+		Password:   password,
+		Email:      email}
 	dbmap := DBPOOL.GetConnection()
 	defer DBPOOL.ReleaseConnection(dbmap)
 	userFromDb := getUserByEmail(user.Email)
 	if userFromDb != nil {
-		return false, 401, "Account with that email already exists."
+		return true, 201, "Account with that email already exists.", userFromDb.Id
 	}
 	user.Password = hashString(user.Password)
 	if insertError := dbmap.Insert(user); insertError != nil {
-		return false, 500, insertError.Error()
+		return false, 500, insertError.Error(), -1
 	} else {
-		return true, 200, "Successfully created user account."
+		return true, 200, "Successfully created user account.", user.Id
 	}
 }
 

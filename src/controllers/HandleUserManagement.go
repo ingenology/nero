@@ -13,22 +13,17 @@ func HandleRegister(res http.ResponseWriter, request *http.Request) {
 	res.Header().Set("Access-Control-Allow-Origin", "*")
 	res.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With")
 	res.Header().Set("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS")
-	emailAddress := strings.ToLower(request.FormValue("email"))
+	emailaddress := strings.ToLower(request.FormValue("email"))
 	password := request.FormValue("password")
 	firstname := request.FormValue("first_name")
 	lastname := request.FormValue("last_name")
-	fmt.Println(emailAddress, password, firstname, lastname)
-	user := &models.User{
-		First_name: firstname,
-		Last_name:  lastname,
-		Password:   password,
-		Email:      emailAddress}
-	success, statuscode, message := models.Register(user)
+	fmt.Println(emailaddress, password, firstname, lastname)
+	success, statuscode, message, userId := models.Register(emailaddress, password, firstname, lastname)
 	output := jsonOutputs.UserOutput{
 		Success:    success,
 		Message:    message,
 		Statuscode: statuscode,
-		UserId:     user.Id}
+		UserId:     userId}
 	outputJson, _ := json.Marshal(output)
 	fmt.Fprintf(res, string(outputJson))
 }
