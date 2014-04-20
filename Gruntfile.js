@@ -99,7 +99,8 @@ module.exports = function (grunt) {
       },
       all: [
         'Gruntfile.js',
-        '<%= yeoman.app %>/scripts/{,*/}*.js'
+        '<%= yeoman.app %>/scripts/{,*/}*.js',
+        '!assets/js/plugins/jquery.gomap-1.3.2.js'
       ],
       test: {
         options: {
