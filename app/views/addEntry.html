@@ -1,4 +1,4 @@
-<div class="wrapper-addEntry">
+<div class="wrapper-addEntry" ng-controller="AddEntryCtrl">
 
 	<div class="container">
 		<p>Please enter your journal entry data, then make sure your phone is secured within the hotshoe mount and positioned towards your target photo frame. Then, capture your position data and get ready to shoot!</p>
@@ -27,8 +27,8 @@
 					<div class="data-alt"></div>
 				</div><!-- /.data -->
 			</div><!-- /.posDataReadout -->
-			<button onclick="getLocation()" class="btn capturePosData">Capture Position, Direction, Altitude</button>
-			<button class="btn btn-large nextStep" onclick="navActive('#/')">Start Shooting!</button>
+			<a onclick="getLocation()" class="btn capturePosData">Capture Position</a>
+			<a class="btn btn-large nextStep" onclick="navActive('#/')">Start Shooting!</a>
 		</form>
 	</div><!-- /.container -->
 
