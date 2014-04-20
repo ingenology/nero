@@ -5,9 +5,6 @@
  -------------------------------------------------------------------------- */
 
 angular.module('neroApp')
-    .controller('SecondCtrl', function ($scope) {
-        $scope.entry = 'pickles';
-    })
     .controller('EntryCtrl', function ($scope) {
         $scope.entryData = [
             {

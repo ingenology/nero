@@ -68,10 +68,17 @@ function showPosition(position) {
  Navigation Interaction
  -------------------------------------------------------------------------- */
 
-// TODO Add Activate Class Logic
+// TODO Simplify These Two
 $('.nav-primary li > a').click(
     function() {
         $('.nav-primary li > a').removeClass('active');
         $(this).addClass('active');
     }
 );
+
+function navActive(path) {
+    var nav = $('.nav-primary a');
+    $('.nav-primary li > a').removeClass('active');
+    $('[href="' + path + '"]').addClass('active');
+    window.location.href=path;
+}
