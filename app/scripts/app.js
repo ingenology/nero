@@ -14,28 +14,31 @@ angular.module('neroApp', [
         $routeProvider
             .when('/', {
                 templateUrl: 'views/entryList.html',
-                controller: 'EntryCtrl'
+                controller: 'MainCtrl'
             })
             .when('/fieldGuide', {
                 templateUrl: 'views/fieldGuide.html',
-                controller: 'FieldGuideCtrl'
-            })
-            .when('/login', {
-                templateUrl: 'views/login.html',
-                controller: 'LoginCtrl'
+                controller: 'MainCtrl'
             })
             .when('/addEntry', {
                 templateUrl: 'views/addEntry.html',
-                controller: 'AddEntryCtrl'
+                controller: 'MainCtrl'
             })
             .when('/entryDetail', {
                 templateUrl: 'views/entryDetail.html',
-                controller: 'EntryDetailCtrl'
+                controller: 'MainCtrl'
             })
             .otherwise({
                 redirectTo: '/'
             });
     });
+
+function MainCtrl($scope) {
+    $scope.greeting = 'Hola!';
+}
+function LoginCtrl($scope) {
+    $scope.greeting = 'YO!!';
+}
 
 /* --------------------------------------------------------------------------
  Phone Capture Data

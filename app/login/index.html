@@ -4,11 +4,11 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
-	<!-- TODO Make sure to flesh this out -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content=""><meta name="HandheldFriendly" content="True">
+    <title>Login to Nero</title>
+    <meta name="description" content="">
+	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="320">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 	<meta http-equiv="cleartype" content="on">
@@ -19,52 +19,32 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="/styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="neroApp">
+  <body class="page-login" ng-app="neroApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <!-- Add your site or application content here -->
-    <div ng-controller="MainCtrl" class="wrapper-app">
-	    <nav class="nav-primary navbar-static-top" role="navigation">
-		    <div class="container">
-			    <a class="logo" href="#/"><img src="images/nero-logo.png"></a>
 
-			    <div class="nav-primary-links">
-				    <ul>
-					    <li>
-						    <a href="#/" class="active">
-							    <img class="nav-icon link-entryList" src="images/list.png">
-							    <span>Entry List</span>
-						    </a>
-					    </li>
-					    <li>
-						    <a href="#/fieldGuide">
-							    <img class="nav-icon link-fieldGuide" src="images/guide.png">
-							    <span>Field Guide</span>
-						    </a>
-					    </li>
-					    <li>
-						    <a href="#/addEntry">
-							    <img class="nav-icon link-addEntry" src="images/add.png">
-							    <span>Add Entry</span>
-						    </a>
-					    </li>
-				    </ul>
-			    </div>
-			    <!-- /.nav-primary-links -->
+    <div class="wrapper-login" ng-controller="LoginCtrl">
+	    <div class="panel panel-default">
+		    <div class="panel-heading">
+			    <img class="logo-head" src="/images/nero-logo.png">
 		    </div>
-		    <!-- /.container -->
-	    </nav>
-
-	    <div class="wrapper-app" ng-view=""></div>
-    </div>
-
-    <footer class="container">
-		<p>♥ from the Nero team</p>
-    </footer>
+		    <div class="panel-body">
+			    <form accept-charset="UTF-8" role="form">
+				    <fieldset>
+					    <div class="form-group">
+						    <input class="form-control" placeholder="E-mail" name="email" type="text">
+					    </div>
+					    <input class="btn btn-lg btn-block" type="submit" value="Login">
+				    </fieldset>
+			    </form>
+		    </div>
+		</div>
+    </div><!-- /.wrapper-login -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -84,20 +64,20 @@
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/sass-bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/jquery/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/sass-bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/vendor/gyro.min.js"></script>
-    <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/main.js"></script>
+    <script src="/scripts/vendor/gyro.min.js"></script>
+    <script src="/scripts/app.js"></script>
+    <script src="/scripts/controllers/main.js"></script>
     <!-- endbuild -->
 
 </body>

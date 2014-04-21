@@ -35,8 +35,6 @@
  *    - General
  *
  *  $_PAGES
- *    - Dashboard
- *    - Entry Detail
  *
  */
 /* ==========================================================================
@@ -5078,6 +5076,10 @@ td.visible-print {
 /* ==========================================================================
  $_GLOBAL
  ========================================================================== */
+html, body {
+  height: 100%;
+  width: 100%; }
+
 body {
   background: #363636;
   min-width: 300px;
@@ -5352,14 +5354,42 @@ footer {
 /* --------------------------------------------------------------------------
  Login Page
  -------------------------------------------------------------------------- */
-.wrapper-login {
-  background: url("../images/login/login-bg.jpg") center;
-  padding: 6em 0; }
-  .wrapper-login .btn {
-    background: orange;
-    color: #fff; }
-    .wrapper-login .btn:hover {
-      background: #e69500; }
+.page-login {
+  background: url("../images/login/login-bg.jpg") black center no-repeat;
+  background-size: cover; }
+  .page-login .wrapper-login {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 190px;
+    width: 300px;
+    background: #1a1a1a;
+    background: rgba(26, 26, 26, 0.65); }
+  .page-login .logo-he {
+    width: 100px;
+    display: block;
+    margin: 0 auto; }
+  .page-login .panel {
+    background: transparent;
+    border: none; }
+  .page-login .panel-heading {
+    text-align: center;
+    background: black;
+    color: #cccccc;
+    border-color: #4d4d4d; }
+  .page-login input {
+    background: #262626;
+    color: #cccccc; }
+  .page-login .btn {
+    background: #66afe9;
+    color: #0a2b46;
+    transition: background 0.5s ease; }
+    .page-login .btn:hover {
+      background: #4d3e9c;
+      color: #fff; }
 
 /* --------------------------------------------------------------------------
  Field Guide

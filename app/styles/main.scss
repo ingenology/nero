@@ -35,8 +35,6 @@
  *    - General
  *
  *  $_PAGES
- *    - Dashboard
- *    - Entry Detail
  *
  */
 
@@ -66,6 +64,8 @@ $icon-font-path: "../../bower_components/sass-bootstrap/fonts/";
 $color-navbg: #fafafa;
 $color-primary-light: #ccc;
 $color-primary-dark: #333;
+$color-primary-blue: #66afe9;
+$color-primary-purple: #4d3e9c;
 
 
 /* --------------------------------------------------------------------------
@@ -131,6 +131,7 @@ $browser_context: 16;
  ========================================================================== */
 
 @import url(http://fonts.googleapis.com/css?family=Roboto);
+html, body { height: 100%; width: 100%; }
 body {
   background: lighten($color-primary-dark, 1%);
   min-width: 300px;
@@ -469,13 +470,35 @@ footer { color: #ccc; text-align: center; margin-top: 2em; }
  Login Page
  -------------------------------------------------------------------------- */
 
-.wrapper-login {
-  background: url("../images/login/login-bg.jpg") center;
-  padding: 6em 0;
+.page-login {
+  background: url("../images/login/login-bg.jpg") black center no-repeat;
+  background-size: cover;
+  .wrapper-login {
+	margin: auto;
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+	height: 190px;
+	width: 300px;
+	background: darken($color-primary-dark, 10%);
+	background: rgba(darken($color-primary-dark, 10%), 0.65);
+  }
+  .logo-head { width: 100px; display: block; margin: 0 auto; }
+  .panel { background: transparent; border: none; }
+  .panel-heading {
+	text-align: center;
+	background: black;
+	color: $color-primary-light;
+	border-color: lighten($color-primary-dark,10%);
+  }
+  input { background: darken($color-primary-dark, 5%); color: $color-primary-light; }
   .btn {
-	background: orange;
-	color: #fff;
-	&:hover { background: darken(orange, 5%); }
+	background: $color-primary-blue;
+	color: darken($color-primary-blue, 50%);
+	transition: background 0.5s ease;
+	&:hover {
+	  background: $color-primary-purple;
+	  color: #fff;
+	}
   }
 }
 
