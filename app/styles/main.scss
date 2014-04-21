@@ -490,7 +490,10 @@ footer { color: #ccc; text-align: center; margin-top: 2em; }
 	color: $color-primary-light;
 	border-color: lighten($color-primary-dark,10%);
   }
-  input { background: darken($color-primary-dark, 5%); color: $color-primary-light; }
+  input {
+	background: darken($color-primary-dark, 5%);
+	color: $color-primary-light;
+  }
   .btn {
 	background: $color-primary-blue;
 	color: darken($color-primary-blue, 50%);
