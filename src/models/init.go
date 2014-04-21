@@ -3,11 +3,18 @@ package models
 import (
 	"database/sql"
 	"github.com/coopernurse/gorp"
+	"github.com/stathat/jconfig"
 	_ "github.com/ziutek/mymysql/godrv"
 )
 
 var (
-	DBPOOL = &ConnectionPoolWrapper{}
+	DBPOOL     = &ConnectionPoolWrapper{}
+	config     = jconfig.LoadConfig("/etc/nero.conf")
+	dbusername = config.GetString("dbusername")
+	dbpassword = config.GetString("dbpassword")
+	dbaddress  = config.GetString("dbaddress")
+	port       = config.GetString("dbport")
+	db, _      = sql.Open("mymysql", "tcp:"+dbaddress+":"+port+"*"+"nero/"+dbusername+"/"+dbpassword)
 )
 
 func Init(poolSize int) {
@@ -18,7 +25,7 @@ func Init(poolSize int) {
 }
 
 func initDb() (*gorp.DbMap, error) {
-	db, connectionError := sql.Open("mymysql", "tcp:localhost:8889*nero/root/root")
+	db, connectionError := sql.Open("mymysql", "tcp:"+dbaddress+":"+port+"*"+"nero/"+dbusername+"/"+dbpassword)
 
 	if connectionError != nil {
 		panic(connectionError)
