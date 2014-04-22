@@ -8,7 +8,7 @@ import (
 )
 
 type Journal struct {
-	Id         int32   `db:"id"`
+	Id         int32   `db:"id" json:"id"`
 	UserId     int     `db:"user_id" json:"user_id"`
 	Title      string  `db:"title" json:"title"`
 	Latitude   float64 `db:"latitude" json:"latitude"`
