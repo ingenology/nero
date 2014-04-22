@@ -209,7 +209,7 @@ module.exports = function (grunt) {
     // TODO Figure out why css images aren't being referenced after compile.
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
-      css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
+      css: ['<%= yeoman.dist %>/assets/css/*.css'],
       options: {
         assetsDirs: ['<%= yeoman.dist %>']
       }

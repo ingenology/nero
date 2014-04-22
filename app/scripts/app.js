@@ -1,6 +1,15 @@
 'use strict';
 
 /* --------------------------------------------------------------------------
+ Global Variables
+ -------------------------------------------------------------------------- */
+
+var APPDATA =
+    {
+        message : 'No data currently available'
+    };
+
+/* --------------------------------------------------------------------------
  Angular Stuff
  -------------------------------------------------------------------------- */
 
@@ -35,6 +44,10 @@ angular.module('neroApp', [
 
 function MainCtrl($scope) {
     $scope.greeting = 'Hola!';
+}
+function EntryCtrl($scope) {
+    $scope.greeting = 'Greetings!';
+    alert('Loaded');
 }
 function LoginCtrl($scope) {
     $scope.greeting = 'YO!!';
@@ -94,4 +107,35 @@ function navActive(path) {
     $('.nav-primary li > a').removeClass('active');
     $('[href="' + path + '"]').addClass('active');
     window.location.href=path;
+}
+
+
+/* --------------------------------------------------------------------------
+ Login Interaction
+ -------------------------------------------------------------------------- */
+
+$('#button-login').click(function() {
+    $.ajax({
+        url: "http://ec2-54-186-41-177.us-west-2.compute.amazonaws.com:8080/register",
+        type: "POST",
+        // the name of the callback parameter, as specified by the YQL service
+        jsonp: "callback",
+        // tell jQuery we're expecting JSONP
+        dataType: "json",
+        // tell YQL what we want and that we want JSON
+        data: { email: $('#login-email').val()},
+        // work with the response
+        success: function( response ) {
+            alert('Win');
+            APPDATA['user_id'] = response['UserId']; // server response
+            APPDATA['journals'] = response[''].toLowerCase(); // server response
+        },
+        error: function( request,message,exception ) {
+            console.log( exception );
+        }
+    });
+});
+
+function getAppData() {
+
 }
