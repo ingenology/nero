@@ -21,7 +21,7 @@ func HandlePhotoUpload(res http.ResponseWriter, request *http.Request) {
 	contentType := header.Header.Get("Content-Type")
 	fileBytes, getFileError := ioutil.ReadAll(file)
 	if getFileError != nil {
-		fmt.Println(getFileError, fileBytes, "There was an error")
+		fmt.Println(getFileError, fileBytes, "There was an error.")
 	}
 
 	success, statuscode, message, photoId := models.CreateNewPhotoForJournal(userId, journalId, fileBytes, rawFileName, contentType, "1")
