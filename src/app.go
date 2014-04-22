@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	models.Init(100)
+	models.Init(10)
 
 	router := mux.NewRouter()
 	router.HandleFunc("/register", controllers.HandleRegister).Methods("POST")
