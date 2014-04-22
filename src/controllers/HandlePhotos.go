@@ -25,7 +25,6 @@ func HandlePhotoUpload(res http.ResponseWriter, request *http.Request) {
 	}
 
 	success, statuscode, message, photoId := models.CreateNewPhotoForJournal(userId, journalId, fileBytes, rawFileName, contentType, "1")
-
 	output := jsonOutputs.PhotoOutput{
 		Success:    success,
 		Message:    message,
