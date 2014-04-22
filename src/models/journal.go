@@ -1,6 +1,7 @@
 package models
 
 import (
+	"fmt"
 	"github.com/coopernurse/gorp"
 	"strconv"
 	"time"
@@ -52,6 +53,7 @@ func InsertJournal(
 
 	err := datasource.Insert(journal)
 	if err != nil {
+		fmt.Println(err)
 		return false, 500, "Database failure.", -1
 	}
 	return true, 200, "Successfully added journal entry.", journal.Id
