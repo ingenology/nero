@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/gorilla/mux"
 	"io/ioutil"
+	"jsonOutputs"
 	"models"
 	"net/http"
 )
@@ -23,14 +24,14 @@ func HandlePhotoUpload(res http.ResponseWriter, request *http.Request) {
 		fmt.Println(getFileError, fileBytes, "There was an error")
 	}
 
-	models.CreateNewPhotoForJournal(userId, journalId, fileBytes, rawFileName, contentType, "1")
-	// success, statuscode, message, userId := models.Register(emailaddress, password, firstname, lastname)
-	// output := jsonOutputs.UserOutput{
-	// 	Success:    success,
-	// 	Message:    message,
-	// 	Statuscode: statuscode,
-	// 	UserId:     userId}
+	success, statuscode, message, photoId := models.CreateNewPhotoForJournal(userId, journalId, fileBytes, rawFileName, contentType, "1")
 
-	outputJson, _ := json.Marshal("test")
+	output := jsonOutputs.PhotoOutput{
+		Success:    success,
+		Message:    message,
+		Statuscode: statuscode,
+		PhotoId:    photoId}
+
+	outputJson, _ := json.Marshal(output)
 	fmt.Fprintf(res, string(outputJson))
 }

@@ -44,6 +44,7 @@ CREATE TABLE photos (
   type int NOT NULL,
   image_location VARCHAR(255) NOT NULL,
   create_date LONG NOT NULL,
+  upload_complete TINYINT(1) NOT NULL, 
   CONSTRAINT id_pk PRIMARY KEY (id)
 ) ENGINE = INNODB;
 
