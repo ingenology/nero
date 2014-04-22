@@ -1,18 +1,15 @@
 package utils
 
-var (
-	config         = jconfig.LoadConfig("/etc/nero.conf")
-	aws_access_key = config.GetString("aws_access_key")
-	aws_secret_key = config.GetString("aws_secret_key")
+import (
+	"fmt"
+	"github.com/crowdmob/goamz/aws"
+	"github.com/crowdmob/goamz/s3"
 )
 
-func FileUploader(file []bytes, contentType string, filename string) {
-
-	auth, err := aws.EnvAuth()
-	if err != nil {
-		fmt.Println(err)
-	}
+func FileUploader(file []byte, contentType string, filename string, awsAccessKey string, awsSecretKey string) {
+	auth := aws.Auth{AccessKey: awsAccessKey, SecretKey: awsSecretKey}
 	s := s3.New(auth, aws.USWest2)
 	bucket := s.Bucket("neroimages")
-	bucket.Put("image.jpg", fileBytes, contentType, s3.BucketOwnerFull, s3.Options{})
+	error := bucket.Put(filename, file, contentType, s3.PublicRead, s3.Options{})
+	fmt.Println(error)
 }

@@ -6,11 +6,11 @@ import (
 )
 
 type User struct {
-	Id         int
-	Email      string
-	Password   string
-	First_name string
-	Last_name  string
+	Id         int    `json:"id"`
+	Email      string `json:"email"`
+	Password   string `json:"password"`
+	First_name string `json:"first_name"`
+	Last_name  string `json:"last_name"`
 }
 
 func Register(email, password, firstname, lastname string) (bool, int, string, int) {

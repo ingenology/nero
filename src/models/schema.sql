@@ -1,5 +1,7 @@
+DROP TABLE IF EXISTS photos;
 DROP TABLE IF EXISTS journals;
 DROP TABLE IF EXISTS users;
+
 
 -- User table
 CREATE TABLE users (
@@ -41,7 +43,7 @@ CREATE TABLE photos (
   filename VARCHAR(255) NOT NULL,
   type int NOT NULL,
   image_location VARCHAR(255) NOT NULL,
-  create_data LONG NOT NULL,
+  create_date LONG NOT NULL,
   CONSTRAINT id_pk PRIMARY KEY (id)
 ) ENGINE = INNODB;
 
