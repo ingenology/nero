@@ -34,13 +34,13 @@ ADD CONSTRAINT user_id_fk
 FOREIGN KEY  journals(user_id)
 REFERENCES users(id);
 
--- Journal table
+-- Photos table
 CREATE TABLE photos (
   id INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
   journal_id INTEGER NOT NULL,
   filename VARCHAR(255) NOT NULL,
   type int NOT NULL,
-  image_location VARCHAR NOT NULL,
+  image_location VARCHAR(255) NOT NULL,
   create_data LONG NOT NULL,
   CONSTRAINT id_pk PRIMARY KEY (id)
 ) ENGINE = INNODB;

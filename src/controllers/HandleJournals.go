@@ -12,7 +12,8 @@ func AddJournalHandler(resWriter http.ResponseWriter, req *http.Request) {
 	resWriter.Header().Set("Access-Control-Allow-Origin", "*")
 	resWriter.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With")
 	resWriter.Header().Set("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS")
-	userId := req.FormValue("user_id")
+	params := mux.Vars(req)
+	userId := params["user_id"]
 	title := req.FormValue("title")
 	latitude := req.FormValue("latitude")
 	longitude := req.FormValue("longitude")
