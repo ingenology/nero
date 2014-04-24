@@ -1,8 +1,8 @@
 package jsonOutputs
 
 type UserOutput struct {
-	Success    bool
-	Message    string
-	Statuscode int
-	UserId     int
+	Success    bool   `json:"success"`
+	Message    string `json:"message"`
+	Statuscode int    `json:"statuscode"`
+	UserId     int    `json:"user_id"`
 }

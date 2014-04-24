@@ -8,13 +8,16 @@ import (
 )
 
 var (
-	DBPOOL     = &ConnectionPoolWrapper{}
-	config     = jconfig.LoadConfig("/etc/nero.conf")
-	dbusername = config.GetString("dbusername")
-	dbpassword = config.GetString("dbpassword")
-	dbaddress  = config.GetString("dbaddress")
-	port       = config.GetString("dbport")
-	db, _      = sql.Open("mymysql", "tcp:"+dbaddress+":"+port+"*"+"nero/"+dbusername+"/"+dbpassword)
+	DBPOOL         = &ConnectionPoolWrapper{}
+	config         = jconfig.LoadConfig("/etc/nero.conf")
+	dbusername     = config.GetString("dbusername")
+	dbpassword     = config.GetString("dbpassword")
+	dbaddress      = config.GetString("dbaddress")
+	port           = config.GetString("dbport")
+	aws_access_key = config.GetString("aws_access_key")
+	aws_secret_key = config.GetString("aws_secret_key")
+	s3Location     = config.GetString("s3_location")
+	db, _          = sql.Open("mymysql", "tcp:"+dbaddress+":"+port+"*"+"nero/"+dbusername+"/"+dbpassword)
 )
 
 func Init(poolSize int) {
@@ -35,6 +38,7 @@ func initDb() (*gorp.DbMap, error) {
 
 	dbmap.AddTableWithName(Journal{}, "journals").SetKeys(true, "Id")
 	dbmap.AddTableWithName(User{}, "users").SetKeys(true, "Id")
+	dbmap.AddTableWithName(Photo{}, "photos").SetKeys(true, "Id")
 	dbmap.CreateTables()
 
 	return dbmap, nil

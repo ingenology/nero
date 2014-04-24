@@ -3,25 +3,34 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	// "models"
+	"github.com/gorilla/mux"
+	"io/ioutil"
+	"jsonOutputs"
+	"models"
 	"net/http"
 )
 
 func HandlePhotoUpload(res http.ResponseWriter, request *http.Request) {
-	file, _, _ := request.FormFile("file")
-	// contentType := request.FormValue("contentType")
-	var fileBytes []byte
-	_, getFileError := file.Read(fileBytes)
-	if getFileError != nil {
-		fmt.Println(getFileError)
-	}
-	// success, statuscode, message, userId := models.Register(emailaddress, password, firstname, lastname)
-	// output := jsonOutputs.UserOutput{
-	// 	Success:    success,
-	// 	Message:    message,
-	// 	Statuscode: statuscode,
-	// 	UserId:     userId}
+	params := mux.Vars(request)
+	userId := params["user_id"]
+	journalId := params["journal_id"]
+	file, header, _ := request.FormFile("file")
+	rawFileName := header.Filename
 
-	outputJson, _ := json.Marshal("test")
+	fmt.Println(header.Header)
+	contentType := header.Header.Get("Content-Type")
+	fileBytes, getFileError := ioutil.ReadAll(file)
+	if getFileError != nil {
+		fmt.Println(getFileError, fileBytes, "There was an error.")
+	}
+
+	success, statuscode, message, photoId := models.CreateNewPhotoForJournal(userId, journalId, fileBytes, rawFileName, contentType, "1")
+	output := jsonOutputs.PhotoOutput{
+		Success:    success,
+		Message:    message,
+		Statuscode: statuscode,
+		PhotoId:    photoId}
+
+	outputJson, _ := json.Marshal(output)
 	fmt.Fprintf(res, string(outputJson))
 }
