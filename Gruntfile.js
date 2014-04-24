@@ -165,7 +165,7 @@ module.exports = function (grunt) {
         httpImagesPath: '/images',
         httpGeneratedImagesPath: '/images/generated',
         httpFontsPath: '/styles/fonts',
-        relativeAssets: false,
+        relativeAssets: true,
         assetCacheBuster: false,
         raw: 'Sass::Script::Number.precision = 10\n'
       },
@@ -209,9 +209,9 @@ module.exports = function (grunt) {
     // TODO Figure out why css images aren't being referenced after compile.
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
-      css: ['<%= yeoman.dist %>/assets/css/*.css'],
+      css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
       options: {
-        assetsDirs: ['<%= yeoman.dist %>']
+        assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/images']
       }
     },
 
@@ -286,6 +286,7 @@ module.exports = function (grunt) {
             '.htaccess',
             '*.html',
             'views/{,*/}*.html',
+            'login/{,*}*.html',
             'bower_components/**/*',
             'images/{,*/}*.{webp}',
             'fonts/*'

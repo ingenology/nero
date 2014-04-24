@@ -42,17 +42,6 @@ angular.module('neroApp', [
             });
     });
 
-function MainCtrl($scope) {
-    $scope.greeting = 'Hola!';
-}
-function EntryCtrl($scope) {
-    $scope.greeting = 'Greetings!';
-    alert('Loaded');
-}
-function LoginCtrl($scope) {
-    $scope.greeting = 'YO!!';
-}
-
 /* --------------------------------------------------------------------------
  Phone Capture Data
  -------------------------------------------------------------------------- */
