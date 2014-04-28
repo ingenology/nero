@@ -5,6 +5,6 @@ dist
 .tmp
 .sass-cache
 app/bower_components
-pkg
+server/pkg
 .DS_Store
-src/github.com
+server/src/github.com
