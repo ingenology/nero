@@ -4,10 +4,7 @@
  Global Variables
  -------------------------------------------------------------------------- */
 
-var APPDATA =
-    {
-        message : 'No data currently available'
-    };
+var APPDATA = { message : 'No data currently available' };
 
 /* --------------------------------------------------------------------------
  Angular Stuff
@@ -115,16 +112,14 @@ $('#button-login').click(function() {
         data: { email: $('#login-email').val()},
         // work with the response
         success: function( response ) {
-            alert('Win');
-            APPDATA['user_id'] = response['UserId']; // server response
-            APPDATA['journals'] = response[''].toLowerCase(); // server response
+            if (response["success"]) {
+                alert('Win');
+                APPDATA['user_id'] = response['user_id']; // server response
+                window.location = "/";
+            }
         },
         error: function( request,message,exception ) {
             console.log( exception );
         }
     });
 });
-
-function getAppData() {
-
-}
