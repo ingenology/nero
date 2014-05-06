@@ -6,7 +6,7 @@
 
 var APPDATA = {
     message : 'No data currently available',
-    status: 'false'
+    loggedin_status: 'false'
 };
 
 /* --------------------------------------------------------------------------
@@ -105,11 +105,20 @@ function navActive(path) {
 
 var loginModal = $('.modal-login');
 function loginReveal(data) {
-    if (data.status == 'false') {
+    if (data.loggedin_status == 'true') {
         loginModal.delay(1000).fadeOut(600);
+    } else {
+        loginModal.show();;
     }
 }
 loginReveal(APPDATA);
+
+function getAppData(userID){
+    $.getJSON("http://ec2-54-186-41-177.us-west-2.compute.amazonaws.com:8080/" + userID + "/journals", function(json){
+        APPDATA = json;
+        alert(APPDATA['message']);
+    });
+}
 
 $('#button-login').click(function() {
     $.ajax({
@@ -124,9 +133,10 @@ $('#button-login').click(function() {
         // work with the response
         success: function( response ) {
             if (response["success"]) {
-                alert('Win');
                 APPDATA['user_id'] = response['user_id']; // server response
-                window.location = "/";
+                getAppData(APPDATA['user_id']);
+                APPDATA['loggedin_status'] = 'true';
+                loginReveal(APPDATA);
             }
         },
         error: function( request,message,exception ) {
