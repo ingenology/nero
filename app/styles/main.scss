@@ -467,12 +467,17 @@ footer { color: #ccc; text-align: center; margin-top: 2em; }
 }
 
 /* --------------------------------------------------------------------------
- Login Page
+ Login Modal
  -------------------------------------------------------------------------- */
 
-.page-login {
+.modal-login {
   background: url("../images/login/login-bg.jpg") black center no-repeat;
   background-size: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
   .wrapper-login {
 	margin: auto;
 	position: absolute;
@@ -504,6 +509,7 @@ footer { color: #ccc; text-align: center; margin-top: 2em; }
 	}
   }
 }
+
 
 /* --------------------------------------------------------------------------
  Field Guide

@@ -4,7 +4,10 @@
  Global Variables
  -------------------------------------------------------------------------- */
 
-var APPDATA = { message : 'No data currently available' };
+var APPDATA = {
+    message : 'No data currently available',
+    status: 'false'
+};
 
 /* --------------------------------------------------------------------------
  Angular Stuff
@@ -99,6 +102,14 @@ function navActive(path) {
 /* --------------------------------------------------------------------------
  Login Interaction
  -------------------------------------------------------------------------- */
+
+var loginModal = $('.modal-login');
+function loginReveal(data) {
+    if (data.status == 'false') {
+        loginModal.delay(1000).fadeOut(600);
+    }
+}
+loginReveal(APPDATA);
 
 $('#button-login').click(function() {
     $.ajax({
