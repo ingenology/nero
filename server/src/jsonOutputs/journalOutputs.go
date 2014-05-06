@@ -3,10 +3,10 @@ package jsonOutputs
 import "models"
 
 type JournalsOutput struct {
-	Success    bool   `json:"success"`
-	Statuscode int    `json:"statuscode"`
-	Message    string `json:"message"`
-	Journals   []*models.Journal
+	Success    bool              `json:"success"`
+	Statuscode int               `json:"statuscode"`
+	Message    string            `json:"message"`
+	Journals   []*models.Journal `json:"journals"`
 }
 
 type JournalOutput struct {
