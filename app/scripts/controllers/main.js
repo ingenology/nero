@@ -9,5 +9,5 @@ angular.module('neroApp')
         $scope.name = "testguy";
     })
     .controller('EntryCtrl', function ($scope) {
-        $scope.entryData = APPDATA;
+        $scope.entryData = APPDATA.test_journalData;
     });
