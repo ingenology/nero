@@ -6,6 +6,7 @@
 
 var APPDATA = {
     appMeta: {
+        // TODO Have this erased on GET journals
         message : 'No data currently available',
         loggedin_status: 'false'
     },
@@ -372,26 +373,29 @@ function navActive(path) {
  Login Interaction
  -------------------------------------------------------------------------- */
 
+$('body').css('overflow', 'hidden'); // Makes app unscrollable
 var loginModal = $('.modal-login');
 function loginReveal(data) {
-    if (data.appMeta.loggedin_status == 'true') {
+    if (data.appMeta.loggedin_status === 'true') {
         loginModal.delay(1000).fadeOut(600);
+        $('body').css('overflow', 'scroll'); // Makes app scrollable
     } else {
-        loginModal.show();;
+        loginModal.show();
     }
 }
 loginReveal(APPDATA);
 
 function getAppData(userID){
-    $.getJSON("http://ec2-54-186-41-177.us-west-2.compute.amazonaws.com:8080/" + userID + "/journals", function(json){
-        APPDATA.journalData = json;
-        alert(APPDATA.journalData['message']);
+    $.getJSON("http://ec2-54-187-123-159.us-west-2.compute.amazonaws.com:8080/" + userID + "/journals", function(json){
+        APPDATA.journals = json.journals;
+        alert(json['message']);
+        window.location = "/#";
     });
 }
 
 $('#button-login').click(function() {
     $.ajax({
-        url: "http://ec2-54-186-41-177.us-west-2.compute.amazonaws.com:8080/register",
+        url: "http://ec2-54-187-123-159.us-west-2.compute.amazonaws.com:8080/register",
         type: "POST",
         // the name of the callback parameter, as specified by the YQL service
         jsonp: "callback",
