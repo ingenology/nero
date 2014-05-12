@@ -2,7 +2,7 @@
 	<header class="banner">
 		<h1>Journal Entry Title</h1>
 	</header>
-	<div class="container">
+	<div class="container" ng-controller="EntryDetailCtrl">
 		<a onclick="navActive('#/')" class="btn navActive-entryList" role="navigation"><span class="glyphicon glyphicon-arrow-left"></span> Back to Dashboard</a>
 		<div class="container">
 			<div class="col col-md-6">
@@ -11,15 +11,15 @@
 					<tbody>
 					<tr>
 						<td>Entry Id</td>
-						<td>927387243</td>
+						<td>{{entryData.id}}</td>
 					</tr>
 					<tr>
 						<td>Tags</td>
-						<td>summer, summit's field, spain, no filter, test, cat5, medium-format, prime lens</td>
+						<td>{{entryData.hashtags}}</td>
 					</tr>
 					<tr>
 						<td>Notes</td>
-						<td>Trying out the new lens tonight to see if I can get a better exposure. The last lens didn't have a wide enough exposure for the focal length to get a good shot, so I grabbed a new one.</td>
+						<td>{{entryData.notes}}</td>
 					</tr>
 					</tbody>
 				</table>
@@ -28,19 +28,19 @@
 					<tbody>
 					<tr>
 						<td>Latitude</td>
-						<td>39.091315099999996</td>
+						<td>{{entryData.latitude}}</td>
 					</tr>
 					<tr>
 						<td>Longitude</td>
-						<td>-94.5770289</td>
+						<td>{{entryData.latitude}}</td>
 					</tr>
 					<tr>
 						<td>Azimuth</td>
-						<td>92 deg</td>
+						<td>{{entryData.azimuth}} deg</td>
 					</tr>
 					<tr>
 						<td>Altitude</td>
-						<td>65 deg</td>
+						<td>{{entryData.altitude}} deg</td>
 					</tr>
 					</tbody>
 				</table>

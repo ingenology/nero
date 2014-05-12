@@ -6,7 +6,7 @@
 	</div><!-- /.userProfile -->
 </header>
 <section class="container entryList" ng-controller="EntryCtrl">
-	<a href="#/entryDetail" id="{{entry.id}}" class="wrapper-entry clearfix" ng-repeat="entry in entryData">
+	<a href="#/entryDetail/{{entry.id}}" class="wrapper-entry clearfix" ng-repeat="entry in entryData">
 		<span class="status {{entry.status}}">
 			{{entry.status}}
 		</span>

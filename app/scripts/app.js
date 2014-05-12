@@ -49,9 +49,9 @@ angular.module('neroApp', [
                 templateUrl: 'views/addEntry.html',
                 controller: 'MainCtrl'
             })
-            .when('/entryDetail', {
+            .when('/entryDetail/:journalId', {
                 templateUrl: 'views/entryDetail.html',
-                controller: 'MainCtrl'
+                controller: 'EntryDetailCtrl'
             })
             .otherwise({
                 redirectTo: '/'
